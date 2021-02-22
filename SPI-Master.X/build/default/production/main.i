@@ -11,7 +11,7 @@
 
 
 
-#pragma config FOSC = EXTRC_NOCLKOUT
+#pragma config FOSC = XT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
 #pragma config MCLRE = OFF
@@ -25,8 +25,6 @@
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-
-
 
 
 
@@ -2655,9 +2653,107 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\xc.h" 2 3
-# 27 "main.c" 2
+# 25 "main.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 28 "main.c" 2
+# 26 "main.c" 2
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 1 3
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\__size_t.h" 1 3
+
+
+
+typedef unsigned size_t;
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\__null.h" 1 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdarg.h" 1 3
+
+
+
+
+
+
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+# 11 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+# 43 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+struct __prbuf
+{
+ char * ptr;
+ void (* func)(char);
+};
+# 85 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\conio.h" 1 3
+
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\errno.h" 1 3
+# 29 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\errno.h" 3
+extern int errno;
+# 8 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\conio.h" 2 3
+
+
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+
+
+extern char * cgets(char *);
+extern void cputs(const char *);
+# 85 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+# 180 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+# 27 "main.c" 2
 # 1 "./SPI.h" 1
 # 17 "./SPI.h"
 typedef enum
@@ -2693,139 +2789,135 @@ void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
-# 29 "main.c" 2
+# 28 "main.c" 2
 # 1 "./LIB_LCD.h" 1
 # 59 "./LIB_LCD.h"
-void Lcd_Port(char a) {
-    if (a & 1)
-        RD0 = 1;
-    else
-        RD0 = 0;
-
-    if (a & 2)
-        RD1 = 1;
-    else
-        RD1 = 0;
-
-    if (a & 4)
-        RD2 = 1;
-    else
-        RD2 = 0;
-
-    if (a & 8)
-        RD3 = 1;
-    else
-        RD3 = 0;
-
-    if (a & 16)
-        RD4 = 1;
-    else
-        RD4 = 0;
-
-    if (a & 32)
-        RD5 = 1;
-    else
-        RD5 = 0;
-
-    if (a & 64)
-        RD6 = 1;
-    else
-        RD6 = 0;
-
-    if (a & 128)
-        RD7 = 1;
-    else
-        RD7 = 0;
-
+void Puerto(uint8_t x){
+ if(x & 1){RD0 = 1;}else{RD0 = 0;}
+    if(x & 2){RD1 = 1;}else{RD1 = 0;}
+    if(x & 4){RD2 = 1;}else{RD2 = 0;}
+    if(x & 8){RD3 = 1;}else{RD3 = 0;}
+    if(x & 16){RD4 = 1;}else{RD4 = 0;}
+    if(x & 32){RD5 = 1;}else{RD5 = 0;}
+    if(x & 64){RD6 = 1;}else{RD6 = 0;}
+    if(x & 128){RD7 = 1;}else{RD7 = 0;}
 }
 
-void Lcd_Cmd(char a) {
-    RE0 = 0;
-    Lcd_Port(a);
+void LCD_CMD(char a){
+    RE0 = 1;
+    Puerto(a);
     RE1 = 1;
-    _delay((unsigned long)((4)*(8000000/4000.0)));
+    _delay((unsigned long)((5)*(8000000/4000000.0)));
     RE1 = 0;
+    _delay((unsigned long)((5)*(8000000/4000000.0)));
+    _delay((unsigned long)((50)*(8000000/4000000.0)));
+}
+void datosLCD(uint8_t x){
+    RE0 = 0;
+    Puerto(x);
+    RE1 = 1;
+    _delay((unsigned long)((5)*(8000000/4000000.0)));
+    RE1 = 0;
+    _delay((unsigned long)((5)*(8000000/4000000.0)));
+    _delay((unsigned long)((2)*(8000000/4000.0)));
+}
+void LCD_clean(void){
+    datosLCD(0);
+    datosLCD(1);
 }
 
-void Lcd_Clear(void) {
-
-    Lcd_Cmd(1);
+void Lcd_Init(){
+    _delay((unsigned long)((20)*(8000000/4000.0)));
+    datosLCD (0x30);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    datosLCD (0x30);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    datosLCD (0x30);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    datosLCD (0x38);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+    datosLCD (0x08);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+    datosLCD (0x01);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    datosLCD (0x06);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+    datosLCD (0x0C);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
 }
 
-void Lcd_Set_Cursor(char a, char b) {
-    char temp, y, z;
-    if (a == 1) {
-        temp = 0x80 + b - 1;
+void Lcd_Set_Cursor(uint8_t x, uint8_t y){
+ uint8_t a;
+ if(x == 1){
+   a = 0x80 + y;
 
+  datosLCD(a);
+    }
+ else if(x == 2){
+   a = 0xC0 + y;
 
-
-        Lcd_Cmd(temp);
-
-    } else if (a == 2) {
-        temp = 0xC0 + b - 1;
-
-
-
-        Lcd_Cmd(temp);
-
+  datosLCD(a);
     }
 }
-
-void Lcd_Init(void) {
-    _delay((unsigned long)((20)*(8000000/4000.0)));
-    Lcd_Cmd (0x30);
-    _delay((unsigned long)((5)*(8000000/4000.0)));
-    Lcd_Cmd (0x30);
-    _delay((unsigned long)((100)*(8000000/4000000.0)));
-    Lcd_Cmd (0x30);
-    _delay((unsigned long)((100)*(8000000/4000000.0)));
-    Lcd_Cmd (0x38);
-    _delay((unsigned long)((60)*(8000000/4000000.0)));
-    Lcd_Cmd (0x08);
-    _delay((unsigned long)((60)*(8000000/4000000.0)));
-    Lcd_Cmd (0x01);
-    _delay((unsigned long)((5)*(8000000/4000.0)));
-    Lcd_Cmd (0x06);
-    _delay((unsigned long)((60)*(8000000/4000000.0)));
-    Lcd_Cmd (0x0C);
-    _delay((unsigned long)((60)*(8000000/4000000.0)));
-
-
+void Lcd_Write_String(char *a){
+ int i;
+ for(i=0;a[i]!='\0';i++)
+    LCD_CMD(a[i]);
+}
+# 29 "main.c" 2
+# 1 "./LIB_USART.h" 1
+# 16 "./LIB_USART.h"
+void Baudios(void){
+    SPBRG = 12;
 }
 
-void Lcd_Write_Char(char a) {
-
-    RE0 = 1;
-    Lcd_Port(a);
-    RE1 = 1;
-    _delay((unsigned long)((40)*(8000000/4000000.0)));
-    RE1 = 0;
+void config_txsta(void){
+    TXSTAbits.CSRC = 0;
+    TXSTAbits.TX9 = 0;
+    TXSTAbits.TXEN = 1;
+    TXSTAbits.SYNC = 0;
+    TXSTAbits.BRGH = 0;
+    TXSTAbits.TRMT = 0;
+    TXSTAbits.TX9D = 0;
 }
 
-void Lcd_Write_String(char *a) {
-    int i;
-    for (i = 0; a[i] != '\0'; i++)
-        Lcd_Write_Char(a[i]);
+void config_rcsta(void){
+    RCSTAbits.SPEN = 1;
+    RCSTAbits.RX9 = 0;
+    RCSTAbits.SREN = 0;
+    RCSTAbits.CREN = 1;
+    RCREG = 0;
 }
 
-void Lcd_Shift_Right(void) {
-    Lcd_Cmd(0x1C);
+void Write_USART(uint8_t a){
+    while(!TRMT);
+    TXREG=a;
 }
-
-void Lcd_Shift_Left(void) {
-    Lcd_Cmd(0x18);
+void Write_USART_String(char *a){
+    uint8_t i;
+    for(i=0;a[i]!='\0';i++){
+        Write_USART(a[i]);
+    }
+}
+uint8_t Read_USART(){
+  while(!RCIF);
+  return RCREG;
 }
 # 30 "main.c" 2
-# 50 "main.c"
+# 49 "main.c"
+uint8_t cont = 0;
+uint8_t ADC1 = 0;
+uint8_t ADC2 = 0;
+char data[20];
+float volt,temp;
+
+
+
 void setup(void);
 void OSCILADOR(void);
-void Baudios(void);
-void config_txsta(void );
-void config_rcsta(void );
-void Lcd_Init(void );
-
-char data[16];
-char volt;
+void leer_ADC(void);
+void Conteo(void);
+float temperatura(void);
 
 
 
@@ -2836,29 +2928,32 @@ void main(void) {
     config_txsta();
     config_rcsta();
     Lcd_Init();
-
-    Lcd_Set_Cursor(1, 1);
-    Lcd_Write_String("S1:    S2:    S3:");
+    LCD_clean();
 
 
 
     while(1){
-       PORTCbits.RC2 = 0;
-       _delay((unsigned long)((1)*(8000000/4000.0)));
+        Conteo();
+        leer_ADC();
+        LCD_clean();
+        Lcd_Set_Cursor(1,1);
+        Lcd_Write_String("S1   S2   S3");
 
-       spiWrite(PORTB);
-       volt = spiRead();
 
-       _delay((unsigned long)((1)*(8000000/4000.0)));
-       PORTCbits.RC2 = 1;
+        temp = temperatura();
+        sprintf(data, "%1.0f   %d   %3.0f" ,volt,cont,temp);
 
-       _delay((unsigned long)((250)*(8000000/4000.0)));
-
-        sprint(data, "%1.2f", volt);
-
-        Lcd_Set_Cursor(2, 1);
-
+        Lcd_Set_Cursor(2,1);
         Lcd_Write_String(data);
+
+        Write_USART_String("S1   S2   S3");
+        Write_USART(13);
+        Write_USART(10);
+
+        Write_USART_String(data);
+        Write_USART(13);
+        Write_USART(10);
+        _delay((unsigned long)((500)*(8000000/4000.0)));
     }
     return;
 }
@@ -2868,12 +2963,63 @@ void main(void) {
 void setup(void){
     ANSEL = 0;
     ANSELH = 0;
-    TRISC2 = 0;
     TRISB = 0;
+    TRISE = 0;
     TRISD = 0;
-    PORTB = 0;
-    PORTD = 0;
-    PORTCbits.RC2 = 1;
-    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
+    PORTE = 0;
+    PORTD = 0;
+    PORTB = 0;
+
+    TRISC0 = 0;
+    TRISC1 = 0;
+    TRISC2 = 0;
+    PORTCbits.RC0 = 1;
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC2 = 1;
+    PORTCbits.RC7 = 1;
+
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
+        SPI_IDLE_2_ACTIVE);
+}
+
+void OSCILADOR(void) {
+    OSCCON = 0b01110001;
+}
+
+void leer_ADC(void){
+    PORTCbits.RC0 = 0;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+
+    spiWrite(1);
+    volt = spiRead();
+
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    PORTCbits.RC0 = 1;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+}
+
+void Conteo(void){
+    PORTCbits.RC1 = 0;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+
+    spiWrite(1);
+    cont = spiRead();
+
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    PORTCbits.RC1 = 1;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+}
+
+float temperatura(void){
+    PORTCbits.RC2 = 0;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+
+    spiWrite(1);
+    temp = spiRead();
+
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    PORTCbits.RC2 = 1;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    return temp;
 }

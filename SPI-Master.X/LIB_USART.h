@@ -24,6 +24,7 @@ void config_txsta(void){
     TXSTAbits.SYNC = 0;//Modo asincrono
     TXSTAbits.BRGH = 0;//Low speed
     TXSTAbits.TRMT = 0;//TSR full
+    TXSTAbits.TX9D = 0;
 }
 
 void config_rcsta(void){
@@ -33,6 +34,21 @@ void config_rcsta(void){
     RCSTAbits.CREN = 1;//Recibir habilitado
     RCREG = 0; 
 }
+//Extraido de https://electrosome.com/uart-pic-microcontroller-mplab-xc8/
+void Write_USART(uint8_t a){
+    while(!TRMT);
+    TXREG=a;
+}
+void Write_USART_String(char *a){
+    uint8_t i;
+    for(i=0;a[i]!='\0';i++){
+        Write_USART(a[i]);
+    }
+}
+uint8_t Read_USART(){
+  while(!RCIF);
+  return RCREG;
+} 
 
 #endif	/* __UART_H_ */
 

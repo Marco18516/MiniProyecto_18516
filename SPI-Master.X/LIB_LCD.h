@@ -8,8 +8,8 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef __LCD_H_
-#define	__LCD_H_
+//#ifndef __LCD_H_
+//#define	__LCD_H_
 
 #ifndef _XTAL_FREQ
 #define _XTAL_FREQ 8000000
@@ -56,124 +56,75 @@
 #endif
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-void Lcd_Port(char a) {
-    if (a & 1)
-        D0 = 1;
-    else
-        D0 = 0;
-
-    if (a & 2)
-        D1 = 1;
-    else
-        D1 = 0;
-
-    if (a & 4)
-        D2 = 1;
-    else
-        D2 = 0;
-
-    if (a & 8)
-        D3 = 1;
-    else
-        D3 = 0;
-
-    if (a & 16)
-        D4 = 1;
-    else
-        D4 = 0;
-
-    if (a & 32)
-        D5 = 1;
-    else
-        D5 = 0;
-
-    if (a & 64)
-        D6 = 1;
-    else
-        D6 = 0;
-
-    if (a & 128)
-        D7 = 1;
-    else
-        D7 = 0;
-
+void Puerto(uint8_t x){
+	if(x & 1){D0 = 1;}else{D0 = 0;}
+    if(x & 2){D1 = 1;}else{D1 = 0;}
+    if(x & 4){D2 = 1;}else{D2 = 0;}
+    if(x & 8){D3 = 1;}else{D3 = 0;}
+    if(x & 16){D4 = 1;}else{D4 = 0;}
+    if(x & 32){D5 = 1;}else{D5 = 0;}
+    if(x & 64){D6 = 1;}else{D6 = 0;}
+    if(x & 128){D7 = 1;}else{D7 = 0;}
 }
 
-void Lcd_Cmd(char a) {
-    RS = 0; // => RS = 0
-    Lcd_Port(a);
-    EN = 1; // => E = 1
-    __delay_ms(4);
-    EN = 0; // => E = 0
+void LCD_CMD(char a){
+    RS = 1;
+    Puerto(a);
+    EN = 1;
+    __delay_us(5);
+    EN = 0;
+    __delay_us(5);
+    __delay_us(50);
+}
+void datosLCD(uint8_t x){
+    RS = 0;
+    Puerto(x);
+    EN = 1;
+    __delay_us(5);
+    EN = 0;
+    __delay_us(5);
+    __delay_ms(2);   
+}
+void LCD_clean(void){
+    datosLCD(0);
+    datosLCD(1);
 }
 
-void Lcd_Clear(void) {
- //   Lcd_Cmd(0);
-    Lcd_Cmd(1);
+void Lcd_Init(){
+    __delay_ms(20);
+    datosLCD (0x30);
+    __delay_ms(5);
+    datosLCD (0x30);
+    __delay_us(100);
+    datosLCD (0x30);
+    __delay_us(100);
+    datosLCD (0x38);
+    __delay_us(60);
+    datosLCD (0x08);
+    __delay_us(60);
+    datosLCD (0x01);
+    __delay_ms(5);
+    datosLCD (0x06);
+    __delay_us(60);
+    datosLCD (0x0C);     
+    __delay_us(60);
 }
 
-void Lcd_Set_Cursor(char a, char b) {
-    char temp, y, z;
-    if (a == 1) {
-        temp = 0x80 + b - 1;
-        //  z = temp >> 4;
-        //  y = temp & 0x0F;
-        //  Lcd_Cmd(z);
-        Lcd_Cmd(temp);
-        //   Lcd_Cmd(y);
-    } else if (a == 2) {
-        temp = 0xC0 + b - 1;
-        //  z = temp >> 4;
-        //  y = temp & 0x0F;
-        // Lcd_Cmd(z);
-        Lcd_Cmd(temp);
-        //  Lcd_Cmd(y);
+void Lcd_Set_Cursor(uint8_t x, uint8_t y){
+	uint8_t a;
+	if(x == 1){
+	  a = 0x80 + y;
+                       
+		datosLCD(a);
+    }
+	else if(x == 2){
+	  a = 0xC0 + y;
+                       
+		datosLCD(a);
     }
 }
-
-void Lcd_Init(void) {
-    __delay_ms(20);
-    Lcd_Cmd (0x30);
-    __delay_ms(5);
-    Lcd_Cmd (0x30);
-    __delay_us(100);
-    Lcd_Cmd (0x30);
-    __delay_us(100);
-    Lcd_Cmd (0x38);
-    __delay_us(60);
-    Lcd_Cmd (0x08);
-    __delay_us(60);
-    Lcd_Cmd (0x01);
-    __delay_ms(5);
-    Lcd_Cmd (0x06);
-    __delay_us(60);
-    Lcd_Cmd (0x0C);     
-    __delay_us(60);
-    
-
+void Lcd_Write_String(char *a){
+	int i;
+	for(i=0;a[i]!='\0';i++)
+	   LCD_CMD(a[i]);
 }
-
-void Lcd_Write_Char(char a) {
-
-    RS = 1; // => RS = 1
-    Lcd_Port(a); //Data transfer
-    EN = 1;
-    __delay_us(40);
-    EN = 0;
-}
-
-void Lcd_Write_String(char *a) {
-    int i;
-    for (i = 0; a[i] != '\0'; i++)
-        Lcd_Write_Char(a[i]);
-}
-
-void Lcd_Shift_Right(void) {
-    Lcd_Cmd(0x1C);
-}
-
-void Lcd_Shift_Left(void) {
-    Lcd_Cmd(0x18);
-}
-
-#endif	/* __LCD_H_ */
