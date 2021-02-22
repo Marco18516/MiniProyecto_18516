@@ -5,6 +5,8 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>SPI.h</itemPath>
+      <itemPath>LIB_LCD.h</itemPath>
+      <itemPath>LIB_USART.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

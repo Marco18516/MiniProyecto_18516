@@ -26,6 +26,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include "SPI.h"
+#include "ADC_LIB.h"
 //*****************************************************************************
 // Definición de variables
 //*****************************************************************************
@@ -35,13 +36,20 @@
 // contrario hay que colocarlos todas las funciones antes del main
 //*****************************************************************************
 void setup(void);
+void ADC(void);
+void OSCILADOR(void);
+void ADC_INTERRUPT(void);
+void ADC(void);//
+void INTER(void);
+
+char volt;
 //*****************************************************************************
 // Código de Interrupción 
 //*****************************************************************************
 void __interrupt() isr(void){
    if(SSPIF == 1){
         PORTD = spiRead();
-        spiWrite(PORTB);
+        spiWrite(volt);
         SSPIF = 0;
     }
 }
@@ -50,12 +58,18 @@ void __interrupt() isr(void){
 //*****************************************************************************
 void main(void) {
     setup();
+    OSCILADOR();
+    INTER();
+    ADC_INIT();
+    ADC_INTERRUPT();
+    
     //*************************************************************************
     // Loop infinito
     //*************************************************************************
     while(1){
-       PORTB--;
-       __delay_ms(250);
+       ADC(); 
+        //Mandar1();
+        __delay_ms(1);
     }
     return;
 }
@@ -65,19 +79,50 @@ void main(void) {
 void setup(void){
     ANSEL = 0;
     ANSELH = 0;
-    
+    TRISA = 0;
     TRISB = 0;
     TRISD = 0;
     
     PORTB = 0;
     PORTD = 0;
-    
+   
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
+}
+
+void ADC(void) {
+    ADC_CHANNEL(0); //canal 0
+    //Cinfiguracion bits ADCON0
+    ADCON0bits.ADCS0 = 1;//Clock ADC conversion
+    ADCON0bits.ADCS1 = 0;//Fosc/2
+    ADCON0bits.ADON = 1;//Se habilita el ADC
+    __delay_ms(0.25);//Para conversion
+    ADCON0bits.GO = 1;  //Inicia la conversión
+    while (ADCON0bits.GO == 1) {
+        //volt = ADRESH; //Desplegar ADRESH en result_adc
+        //PORTB = volt;
+        volt = ((ADRESH * 5.0) / 255); //CONVERSION DE  0-5V      
+    }
+
+}
+
+void OSCILADOR(void) {
+    OSCCON = 0b01110001; //8MHz
+}
+
+//Se deshabilitan las interrupciones del ADC
+void ADC_INTERRUPT() { 
+    PIE1bits.ADIE = 0;
+    PIR1bits.ADIF = 0;
+    OPTION_REG = 0b00000000;
+    INTCON = 0b00000000;
+}
+
+void INTER(void){
     INTCONbits.GIE = 1;         // Habilitamos interrupciones
     INTCONbits.PEIE = 1;        // Habilitamos interrupciones PEIE
     PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
     PIE1bits.SSPIE = 1;         // Habilitamos interrupción MSSP
     TRISAbits.TRISA5 = 1;       // Slave Select
-   
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-
+    
 }

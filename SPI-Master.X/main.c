@@ -26,21 +26,49 @@
 #include <xc.h>
 #include <stdint.h>
 #include "SPI.h"
+#include "LIB_LCD.h"
+//#include "LIB_USART.h"
 //*****************************************************************************
 // Definición de variables
 //*****************************************************************************
 #define _XTAL_FREQ 8000000
+
+#define RS RE0
+#define EN RE1
+#define D0 RD0
+#define D1 RD1
+#define D2 RD2
+#define D3 RD3
+#define D4 RD4
+#define D5 RD5
+#define D6 RD6
+#define D7 RD7
 //*****************************************************************************
 // Definición de funciones para que se puedan colocar después del main de lo 
 // contrario hay que colocarlos todas las funciones antes del main
 //*****************************************************************************
 void setup(void);
+void OSCILADOR(void);
+void Baudios(void);
+void config_txsta(void );
+void config_rcsta(void );
+void Lcd_Init(void );
 
+char data[16];
+char volt;
 //*****************************************************************************
 // Código Principal
 //*****************************************************************************
 void main(void) {
     setup();
+    OSCILADOR();
+    Baudios();
+    config_txsta();
+    config_rcsta();
+    Lcd_Init();
+    //Se selecciona que se muestre en la primera fila de la LCD
+    Lcd_Set_Cursor(1, 1);
+    Lcd_Write_String("S1:    S2:    S3:");
     //*************************************************************************
     // Loop infinito
     //*************************************************************************
@@ -49,13 +77,18 @@ void main(void) {
        __delay_ms(1);
        
        spiWrite(PORTB);
-       PORTD = spiRead();
+       volt = spiRead();
        
        __delay_ms(1);
        PORTCbits.RC2 = 1;       //Slave Deselect 
        
        __delay_ms(250);
-       PORTB++;
+       //Mostrara en dos decimales el voltaje de 0-5v
+        sprintf(data, "%1.2f", volt);
+        //Se selecciona que se muestre en la segunda fila de la LCD
+        Lcd_Set_Cursor(2, 1); 
+        //Muestra un string en la LCD
+        Lcd_Write_String(data);
     }
     return;
 }

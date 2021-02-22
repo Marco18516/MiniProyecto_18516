@@ -2694,21 +2694,151 @@ void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
 # 29 "main.c" 2
+# 1 "./LIB_LCD.h" 1
+# 59 "./LIB_LCD.h"
+void Lcd_Port(char a) {
+    if (a & 1)
+        RD0 = 1;
+    else
+        RD0 = 0;
+
+    if (a & 2)
+        RD1 = 1;
+    else
+        RD1 = 0;
+
+    if (a & 4)
+        RD2 = 1;
+    else
+        RD2 = 0;
+
+    if (a & 8)
+        RD3 = 1;
+    else
+        RD3 = 0;
+
+    if (a & 16)
+        RD4 = 1;
+    else
+        RD4 = 0;
+
+    if (a & 32)
+        RD5 = 1;
+    else
+        RD5 = 0;
+
+    if (a & 64)
+        RD6 = 1;
+    else
+        RD6 = 0;
+
+    if (a & 128)
+        RD7 = 1;
+    else
+        RD7 = 0;
+
+}
+
+void Lcd_Cmd(char a) {
+    RE0 = 0;
+    Lcd_Port(a);
+    RE1 = 1;
+    _delay((unsigned long)((4)*(8000000/4000.0)));
+    RE1 = 0;
+}
+
+void Lcd_Clear(void) {
+
+    Lcd_Cmd(1);
+}
+
+void Lcd_Set_Cursor(char a, char b) {
+    char temp, y, z;
+    if (a == 1) {
+        temp = 0x80 + b - 1;
 
 
 
+        Lcd_Cmd(temp);
+
+    } else if (a == 2) {
+        temp = 0xC0 + b - 1;
 
 
 
+        Lcd_Cmd(temp);
+
+    }
+}
+
+void Lcd_Init(void) {
+    _delay((unsigned long)((20)*(8000000/4000.0)));
+    Lcd_Cmd (0x30);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    Lcd_Cmd (0x30);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    Lcd_Cmd (0x30);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    Lcd_Cmd (0x38);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+    Lcd_Cmd (0x08);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+    Lcd_Cmd (0x01);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    Lcd_Cmd (0x06);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+    Lcd_Cmd (0x0C);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
 
 
+}
+
+void Lcd_Write_Char(char a) {
+
+    RE0 = 1;
+    Lcd_Port(a);
+    RE1 = 1;
+    _delay((unsigned long)((40)*(8000000/4000000.0)));
+    RE1 = 0;
+}
+
+void Lcd_Write_String(char *a) {
+    int i;
+    for (i = 0; a[i] != '\0'; i++)
+        Lcd_Write_Char(a[i]);
+}
+
+void Lcd_Shift_Right(void) {
+    Lcd_Cmd(0x1C);
+}
+
+void Lcd_Shift_Left(void) {
+    Lcd_Cmd(0x18);
+}
+# 30 "main.c" 2
+# 50 "main.c"
 void setup(void);
+void OSCILADOR(void);
+void Baudios(void);
+void config_txsta(void );
+void config_rcsta(void );
+void Lcd_Init(void );
 
+char data[16];
+char volt;
 
 
 
 void main(void) {
     setup();
+    OSCILADOR();
+    Baudios();
+    config_txsta();
+    config_rcsta();
+    Lcd_Init();
+
+    Lcd_Set_Cursor(1, 1);
+    Lcd_Write_String("S1:    S2:    S3:");
 
 
 
@@ -2717,13 +2847,18 @@ void main(void) {
        _delay((unsigned long)((1)*(8000000/4000.0)));
 
        spiWrite(PORTB);
-       PORTD = spiRead();
+       volt = spiRead();
 
        _delay((unsigned long)((1)*(8000000/4000.0)));
        PORTCbits.RC2 = 1;
 
        _delay((unsigned long)((250)*(8000000/4000.0)));
-       PORTB++;
+
+        sprint(data, "%1.2f", volt);
+
+        Lcd_Set_Cursor(2, 1);
+
+        Lcd_Write_String(data);
     }
     return;
 }

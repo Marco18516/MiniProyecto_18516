@@ -2694,6 +2694,33 @@ void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
 # 29 "main.c" 2
+# 1 "./ADC_LIB.h" 1
+# 18 "./ADC_LIB.h"
+unsigned ADC_CHANNEL(unsigned short canal) {
+
+    switch (canal) {
+        case 0:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+
+            break;
+
+        default:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+            break;
+    }
+
+}
+
+void ADC_INIT(void) {
+    ADCON1 = 0b00000000;
+}
+# 30 "main.c" 2
 
 
 
@@ -2703,13 +2730,20 @@ char spiRead();
 
 
 void setup(void);
+void ADC(void);
+void OSCILADOR(void);
+void ADC_INTERRUPT(void);
+void ADC(void);
+void INTER(void);
+
+char volt;
 
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
    if(SSPIF == 1){
         PORTD = spiRead();
-        spiWrite(PORTB);
+        spiWrite(volt);
         SSPIF = 0;
     }
 }
@@ -2718,12 +2752,18 @@ void __attribute__((picinterrupt(("")))) isr(void){
 
 void main(void) {
     setup();
+    OSCILADOR();
+    INTER();
+    ADC_INIT();
+    ADC_INTERRUPT();
+
 
 
 
     while(1){
-       PORTB--;
-       _delay((unsigned long)((250)*(8000000/4000.0)));
+       ADC();
+
+        _delay((unsigned long)((1)*(8000000/4000.0)));
     }
     return;
 }
@@ -2733,19 +2773,50 @@ void main(void) {
 void setup(void){
     ANSEL = 0;
     ANSELH = 0;
-
+    TRISA = 0;
     TRISB = 0;
     TRISD = 0;
 
     PORTB = 0;
     PORTD = 0;
 
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
+}
+
+void ADC(void) {
+    ADC_CHANNEL(0);
+
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((0.25)*(8000000/4000.0)));
+    ADCON0bits.GO = 1;
+    while (ADCON0bits.GO == 1) {
+
+
+        volt = ((ADRESH * 5.0) / 255);
+    }
+
+}
+
+void OSCILADOR(void) {
+    OSCCON = 0b01110001;
+}
+
+
+void ADC_INTERRUPT() {
+    PIE1bits.ADIE = 0;
+    PIR1bits.ADIF = 0;
+    OPTION_REG = 0b00000000;
+    INTCON = 0b00000000;
+}
+
+void INTER(void){
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
     PIR1bits.SSPIF = 0;
     PIE1bits.SSPIE = 1;
     TRISAbits.TRISA5 = 1;
-
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
 }

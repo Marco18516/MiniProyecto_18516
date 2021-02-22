@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"81 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
+"89 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
 [e E1292 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -45,20 +45,40 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
+"18 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X/ADC_LIB.h
+[v _ADC_CHANNEL ADC_CHANNEL `(ui  1 e 2 0 ]
+"39
+[v _ADC_INIT ADC_INIT `(v  1 e 1 0 ]
+"43 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 "6 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"41 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
+"49 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
 [v _isr isr `II(v  1 e 1 0 ]
-"51
+"59
 [v _main main `(v  1 e 1 0 ]
-"65
+"79
 [v _setup setup `(v  1 e 1 0 ]
+"93
+[v _ADC ADC `(v  1 e 1 0 ]
+"109
+[v _OSCILADOR OSCILADOR `(v  1 e 1 0 ]
+"114
+[v _ADC_INTERRUPT ADC_INTERRUPT `(v  1 e 1 0 ]
+"121
+[v _INTER INTER `(v  1 e 1 0 ]
 "12 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
 "29
@@ -71,7 +91,9 @@ SPI_ACTIVE_2_IDLE 64
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
 "353
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
-[s S48 . 1 `uc 1 RBIF 1 0 :1:0 
+"460
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+[s S178 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -81,14 +103,14 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 GIE 1 0 :1:7 
 ]
 "483
-[s S57 . 1 `uc 1 . 1 0 :2:0 
+[s S187 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S62 . 1 `S48 1 . 1 0 `S57 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES62  1 e 1 @11 ]
-[s S80 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S192 . 1 `S178 1 . 1 0 `S187 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES192  1 e 1 @11 ]
+[s S157 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -97,13 +119,42 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADIF 1 0 :1:6 
 ]
 "554
-[u S88 . 1 `S80 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES88  1 e 1 @12 ]
+[u S165 . 1 `S157 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES165  1 e 1 @12 ]
 "844
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "851
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-[s S118 . 1 `uc 1 TRISA0 1 0 :1:0 
+"1239
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+[s S22 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+`uc 1 ADCS 1 0 :2:6 
+]
+"1277
+[s S27 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 ADCS0 1 0 :1:6 
+`uc 1 ADCS1 1 0 :1:7 
+]
+[s S36 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S39 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S42 . 1 `S22 1 . 1 0 `S27 1 . 1 0 `S36 1 . 1 0 `S39 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES42  1 e 1 @31 ]
+"1347
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
+"1417
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+[s S210 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -113,13 +164,13 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1434
-[u S127 . 1 `S118 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES127  1 e 1 @133 ]
+[u S219 . 1 `S210 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES219  1 e 1 @133 ]
 "1479
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1603
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
-[s S99 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S138 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -128,11 +179,13 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1719
-[u S107 . 1 `S99 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES107  1 e 1 @140 ]
+[u S146 . 1 `S138 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES146  1 e 1 @140 ]
+"1863
+[v _OSCCON OSCCON `VEuc  1 e 1 @143 ]
 "2178
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S224 . 1 `uc 1 BF 1 0 :1:0 
+[s S314 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -142,39 +195,41 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SMP 1 0 :1:7 
 ]
 "2232
-[s S233 . 1 `uc 1 . 1 0 :2:0 
+[s S323 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S238 . 1 `uc 1 . 1 0 :2:0 
+[s S328 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S244 . 1 `uc 1 . 1 0 :2:0 
+[s S334 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S249 . 1 `uc 1 . 1 0 :2:0 
+[s S339 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S254 . 1 `uc 1 . 1 0 :2:0 
+[s S344 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S259 . 1 `uc 1 . 1 0 :2:0 
+[s S349 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S264 . 1 `S224 1 . 1 0 `S233 1 . 1 0 `S238 1 . 1 0 `S244 1 . 1 0 `S249 1 . 1 0 `S254 1 . 1 0 `S259 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES264  1 e 1 @148 ]
+[u S354 . 1 `S314 1 . 1 0 `S323 1 . 1 0 `S328 1 . 1 0 `S334 1 . 1 0 `S339 1 . 1 0 `S344 1 . 1 0 `S349 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES354  1 e 1 @148 ]
+"2978
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
 "3388
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3450
@@ -185,15 +240,17 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
 "4464
 [v _TRISC5 TRISC5 `VEb  1 e 0 @1085 ]
-"51 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
+"45 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
+[v _volt volt `uc  1 e 1 0 ]
+"59
 [v _main main `(v  1 e 1 0 ]
 {
-"61
+"75
 } 0
-"65
+"79
 [v _setup setup `(v  1 e 1 0 ]
 {
-"83
+"91
 } 0
 "12 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -207,10 +264,125 @@ SPI_ACTIVE_2_IDLE 64
 [v spiInit@sType sType `E1292  1 a 1 6 ]
 "27
 } 0
-"41 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
+"109 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
+[v _OSCILADOR OSCILADOR `(v  1 e 1 0 ]
+{
+"111
+} 0
+"121
+[v _INTER INTER `(v  1 e 1 0 ]
+{
+"128
+} 0
+"114
+[v _ADC_INTERRUPT ADC_INTERRUPT `(v  1 e 1 0 ]
+{
+"119
+} 0
+"39 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X/ADC_LIB.h
+[v _ADC_INIT ADC_INIT `(v  1 e 1 0 ]
+{
+"41
+} 0
+"93 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
+[v _ADC ADC `(v  1 e 1 0 ]
+{
+"107
+} 0
+"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 6 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 5 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 3 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 4 ]
+"44
+} 0
+"43 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 8 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 7 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 62 ]
+"70
+} 0
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+{
+[s S695 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+"13
+[s S700 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S703 . 4 `l 1 i 4 0 `d 1 f 4 0 `S695 1 fAsBytes 4 0 `S700 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S703  1 a 4 30 ]
+"12
+[v ___flmul@grs grs `ul  1 a 4 24 ]
+[s S772 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+"14
+[u S775 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S772 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S775  1 a 2 34 ]
+"10
+[v ___flmul@bexp bexp `uc  1 a 1 29 ]
+"11
+[v ___flmul@aexp aexp `uc  1 a 1 28 ]
+"9
+[v ___flmul@sign sign `uc  1 a 1 23 ]
+"8
+[v ___flmul@b b `d  1 p 4 10 ]
+[v ___flmul@a a `d  1 p 4 14 ]
+"205
+} 0
+"4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+{
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 2 ]
+"5
+[v __Umul8_16@product product `ui  1 a 2 0 ]
+"4
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 3 ]
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 4 ]
+"60
+} 0
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+{
+"21
+[v ___fldiv@grs grs `ul  1 a 4 56 ]
+"22
+[v ___fldiv@rem rem `ul  1 a 4 49 ]
+"20
+[v ___fldiv@new_exp new_exp `i  1 a 2 54 ]
+"19
+[v ___fldiv@aexp aexp `uc  1 a 1 61 ]
+"18
+[v ___fldiv@bexp bexp `uc  1 a 1 60 ]
+"16
+[v ___fldiv@sign sign `uc  1 a 1 53 ]
+"8
+[v ___fldiv@a a `d  1 p 4 36 ]
+[v ___fldiv@b b `d  1 p 4 40 ]
+"185
+} 0
+"18 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X/ADC_LIB.h
+[v _ADC_CHANNEL ADC_CHANNEL `(ui  1 e 2 0 ]
+{
+[v ADC_CHANNEL@canal canal `us  1 p 2 3 ]
+"37
+} 0
+"49 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\main.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"47
+"55
 } 0
 "34 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Slave.X\SPI.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]

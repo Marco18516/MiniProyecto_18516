@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"74 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"107 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [e E1292 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -45,6 +45,18 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
+"59 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X/LIB_LCD.h
+[v _Lcd_Port Lcd_Port `(v  1 e 1 0 ]
+"102
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+"115
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+"134
+[v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
+"156
+[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
+"165
+[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
@@ -53,9 +65,9 @@ SPI_ACTIVE_2_IDLE 64
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"42 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"62 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"65
+"98
 [v _setup setup `(v  1 e 1 0 ]
 "12 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -67,7 +79,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _spiRead spiRead `(uc  1 e 1 0 ]
 "229 C:\Program Files\Microchip\xc8\v2.31\pic\include\proc\pic16f887.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S26 . 1 `uc 1 RC0 1 0 :1:0 
+[s S62 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -77,8 +89,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RC7 1 0 :1:7 
 ]
 "308
-[u S35 . 1 `S26 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES35  1 e 1 @7 ]
+[u S71 . 1 `S62 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES71  1 e 1 @7 ]
 "353
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "844
@@ -91,7 +103,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "2178
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S127 . 1 `uc 1 BF 1 0 :1:0 
+[s S189 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -101,53 +113,77 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SMP 1 0 :1:7 
 ]
 "2232
-[s S136 . 1 `uc 1 . 1 0 :2:0 
+[s S198 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S141 . 1 `uc 1 . 1 0 :2:0 
+[s S203 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S147 . 1 `uc 1 . 1 0 :2:0 
+[s S209 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S152 . 1 `uc 1 . 1 0 :2:0 
+[s S214 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S157 . 1 `uc 1 . 1 0 :2:0 
+[s S219 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S162 . 1 `uc 1 . 1 0 :2:0 
+[s S224 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S167 . 1 `S127 1 . 1 0 `S136 1 . 1 0 `S141 1 . 1 0 `S147 1 . 1 0 `S152 1 . 1 0 `S157 1 . 1 0 `S162 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES167  1 e 1 @148 ]
+[u S229 . 1 `S189 1 . 1 0 `S198 1 . 1 0 `S203 1 . 1 0 `S209 1 . 1 0 `S214 1 . 1 0 `S219 1 . 1 0 `S224 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES229  1 e 1 @148 ]
 "3388
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3450
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
+"4182
+[v _RD0 RD0 `VEb  1 e 0 @64 ]
+"4185
+[v _RD1 RD1 `VEb  1 e 0 @65 ]
+"4188
+[v _RD2 RD2 `VEb  1 e 0 @66 ]
+"4191
+[v _RD3 RD3 `VEb  1 e 0 @67 ]
+"4194
+[v _RD4 RD4 `VEb  1 e 0 @68 ]
+"4197
+[v _RD5 RD5 `VEb  1 e 0 @69 ]
+"4200
+[v _RD6 RD6 `VEb  1 e 0 @70 ]
+"4203
+[v _RD7 RD7 `VEb  1 e 0 @71 ]
+"4206
+[v _RE0 RE0 `VEb  1 e 0 @72 ]
+"4209
+[v _RE1 RE1 `VEb  1 e 0 @73 ]
 "4455
 [v _TRISC2 TRISC2 `VEb  1 e 0 @1082 ]
 "4458
 [v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
 "4464
 [v _TRISC5 TRISC5 `VEb  1 e 0 @1085 ]
-"42 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"57 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+[v _data data `[16]uc  1 e 16 0 ]
+"58
+[v _volt volt `uc  1 e 1 0 ]
+"62
 [v _main main `(v  1 e 1 0 ]
 {
-"61
+"94
 } 0
 "34 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\SPI.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
@@ -168,10 +204,10 @@ SPI_ACTIVE_2_IDLE 64
 {
 "32
 } 0
-"65 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"98 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"76
+"109
 } 0
 "12 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -184,4 +220,56 @@ SPI_ACTIVE_2_IDLE 64
 "14
 [v spiInit@sType sType `E1292  1 a 1 3 ]
 "27
+} 0
+"165 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X/LIB_LCD.h
+[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
+{
+"166
+[v Lcd_Write_String@i i `i  1 a 2 8 ]
+"165
+[v Lcd_Write_String@a a `*.26uc  1 p 2 3 ]
+"169
+} 0
+"156
+[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
+{
+[v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
+[v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
+"158
+[v Lcd_Write_Char@a a `uc  1 a 1 2 ]
+"163
+} 0
+"115
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+{
+[v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
+"116
+[v Lcd_Set_Cursor@temp temp `uc  1 a 1 7 ]
+"115
+[v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
+[v Lcd_Set_Cursor@b b `uc  1 p 1 4 ]
+"117
+[v Lcd_Set_Cursor@a a `uc  1 a 1 6 ]
+"132
+} 0
+"134
+[v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
+{
+"154
+} 0
+"102
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+{
+[v Lcd_Cmd@a a `uc  1 a 1 wreg ]
+[v Lcd_Cmd@a a `uc  1 a 1 wreg ]
+[v Lcd_Cmd@a a `uc  1 a 1 3 ]
+"108
+} 0
+"59
+[v _Lcd_Port Lcd_Port `(v  1 e 1 0 ]
+{
+[v Lcd_Port@a a `uc  1 a 1 wreg ]
+[v Lcd_Port@a a `uc  1 a 1 wreg ]
+[v Lcd_Port@a a `uc  1 a 1 0 ]
+"100
 } 0
