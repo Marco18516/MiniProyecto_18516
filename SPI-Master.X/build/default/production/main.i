@@ -2917,7 +2917,7 @@ void setup(void);
 void OSCILADOR(void);
 void leer_ADC(void);
 void Conteo(void);
-float temperatura(void);
+float Sensor(void);
 
 
 
@@ -2939,8 +2939,7 @@ void main(void) {
         Lcd_Set_Cursor(1,1);
         Lcd_Write_String("S1   S2   S3");
 
-
-        temp = temperatura();
+        temp = Sensor();
         sprintf(data, "%1.0f   %d   %3.0f" ,volt,cont,temp);
 
         Lcd_Set_Cursor(2,1);
@@ -2967,6 +2966,7 @@ void setup(void){
     TRISE = 0;
     TRISD = 0;
 
+    PORTC = 0;
     PORTE = 0;
     PORTD = 0;
     PORTB = 0;
@@ -2974,13 +2974,12 @@ void setup(void){
     TRISC0 = 0;
     TRISC1 = 0;
     TRISC2 = 0;
-    PORTCbits.RC0 = 1;
-    PORTCbits.RC1 = 1;
-    PORTCbits.RC2 = 1;
-    PORTCbits.RC7 = 1;
+    PORTCbits.RC0 = 0;
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC2 = 0;
+    PORTCbits.RC7 = 0;
 
-    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
-        SPI_IDLE_2_ACTIVE);
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 }
 
 void OSCILADOR(void) {
@@ -3011,7 +3010,7 @@ void Conteo(void){
     _delay((unsigned long)((1)*(8000000/4000.0)));
 }
 
-float temperatura(void){
+float Sensor(void){
     PORTCbits.RC2 = 0;
     _delay((unsigned long)((1)*(8000000/4000.0)));
 

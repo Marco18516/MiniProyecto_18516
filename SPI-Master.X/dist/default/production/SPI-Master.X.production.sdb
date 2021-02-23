@@ -119,16 +119,16 @@ SPI_ACTIVE_2_IDLE 64
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "65 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"104
+"103
 [v _setup setup `(v  1 e 1 0 ]
-"127
+"126
 [v _OSCILADOR OSCILADOR `(v  1 e 1 0 ]
-"131
+"130
 [v _leer_ADC leer_ADC `(v  1 e 1 0 ]
-"143
+"142
 [v _Conteo Conteo `(v  1 e 1 0 ]
-"155
-[v _temperatura temperatura `(f  1 e 4 0 ]
+"154
+[v _Sensor Sensor `(f  1 e 4 0 ]
 "12 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
 "29
@@ -139,7 +139,9 @@ SPI_ACTIVE_2_IDLE 64
 [v _spiRead spiRead `(uc  1 e 1 0 ]
 "229 C:\Program Files\Microchip\xc8\v2.31\pic\include\proc\pic16f887.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S161 . 1 `uc 1 RC0 1 0 :1:0 
+"291
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+[s S162 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -149,8 +151,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RC7 1 0 :1:7 
 ]
 "308
-[u S170 . 1 `S161 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES170  1 e 1 @7 ]
+[u S171 . 1 `S162 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES171  1 e 1 @7 ]
 "353
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "415
@@ -195,7 +197,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _OSCCON OSCCON `VEuc  1 e 1 @143 ]
 "2178
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S315 . 1 `uc 1 BF 1 0 :1:0 
+[s S316 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -205,39 +207,39 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SMP 1 0 :1:7 
 ]
 "2232
-[s S324 . 1 `uc 1 . 1 0 :2:0 
+[s S325 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S329 . 1 `uc 1 . 1 0 :2:0 
+[s S330 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S335 . 1 `uc 1 . 1 0 :2:0 
+[s S336 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S340 . 1 `uc 1 . 1 0 :2:0 
+[s S341 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S345 . 1 `uc 1 . 1 0 :2:0 
+[s S346 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S350 . 1 `uc 1 . 1 0 :2:0 
+[s S351 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S355 . 1 `S315 1 . 1 0 `S324 1 . 1 0 `S329 1 . 1 0 `S335 1 . 1 0 `S340 1 . 1 0 `S345 1 . 1 0 `S350 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES355  1 e 1 @148 ]
+[u S356 . 1 `S316 1 . 1 0 `S325 1 . 1 0 `S330 1 . 1 0 `S336 1 . 1 0 `S341 1 . 1 0 `S346 1 . 1 0 `S351 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES356  1 e 1 @148 ]
 [s S39 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
@@ -313,12 +315,7 @@ SPI_ACTIVE_2_IDLE 64
 "65
 [v _main main `(v  1 e 1 0 ]
 {
-"100
-} 0
-"155
-[v _temperatura temperatura `(f  1 e 4 0 ]
-{
-"166
+"99
 } 0
 "505 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -328,9 +325,9 @@ SPI_ACTIVE_2_IDLE 64
 [v sprintf@fval fval `d  1 a 4 35 ]
 "545
 [v sprintf@val val `ul  1 a 4 29 ]
-[u S587 . 4 `ul 1 vd 4 0 `d 1 integ 4 0 ]
+[u S588 . 4 `ul 1 vd 4 0 `d 1 integ 4 0 ]
 "543
-[v sprintf@tmpval tmpval `S587  1 a 4 25 ]
+[v sprintf@tmpval tmpval `S588  1 a 4 25 ]
 "517
 [v sprintf@prec prec `i  1 a 2 40 ]
 "534
@@ -426,17 +423,17 @@ SPI_ACTIVE_2_IDLE 64
 "8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S785 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S786 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S790 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S793 . 4 `l 1 i 4 0 `d 1 f 4 0 `S785 1 fAsBytes 4 0 `S790 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S793  1 a 4 24 ]
+[s S791 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S794 . 4 `l 1 i 4 0 `d 1 f 4 0 `S786 1 fAsBytes 4 0 `S791 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S794  1 a 4 24 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 18 ]
-[s S862 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S863 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S865 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S862 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S865  1 a 2 28 ]
+[u S866 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S863 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S866  1 a 2 28 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 23 ]
 "11
@@ -573,10 +570,10 @@ SPI_ACTIVE_2_IDLE 64
 [v ___fleq@ff2 ff2 `d  1 p 4 4 ]
 "12
 } 0
-"104 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"103 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"125
+"124
 } 0
 "12 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -590,25 +587,10 @@ SPI_ACTIVE_2_IDLE 64
 [v spiInit@sType sType `E1292  1 a 1 3 ]
 "27
 } 0
-"131 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"130 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _leer_ADC leer_ADC `(v  1 e 1 0 ]
 {
-"141
-} 0
-"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
-[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-{
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-"13
-[v ___xxtofl@arg arg `ul  1 a 4 10 ]
-"12
-[v ___xxtofl@exp exp `uc  1 a 1 9 ]
-"10
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-[v ___xxtofl@val val `l  1 p 4 0 ]
-"15
-[v ___xxtofl@sign sign `uc  1 a 1 8 ]
-"44
+"140
 } 0
 "20 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X/LIB_USART.h
 [v _config_txsta config_txsta `(v  1 e 1 0 ]
@@ -637,10 +619,30 @@ SPI_ACTIVE_2_IDLE 64
 [v Write_USART@a a `uc  1 a 1 0 ]
 "41
 } 0
-"127 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"154 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+[v _Sensor Sensor `(f  1 e 4 0 ]
+{
+"165
+} 0
+"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 10 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 9 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 0 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 8 ]
+"44
+} 0
+"126 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _OSCILADOR OSCILADOR `(v  1 e 1 0 ]
 {
-"129
+"128
 } 0
 "126 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X/LIB_LCD.h
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
@@ -698,10 +700,10 @@ SPI_ACTIVE_2_IDLE 64
 [v Puerto@x x `uc  1 a 1 0 ]
 "68
 } 0
-"143 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"142 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _Conteo Conteo `(v  1 e 1 0 ]
 {
-"153
+"152
 } 0
 "34 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\SPI.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
