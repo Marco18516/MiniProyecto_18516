@@ -11,7 +11,7 @@
 
 
 
-#pragma config FOSC = EXTRC_NOCLKOUT
+#pragma config FOSC = XT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
 #pragma config MCLRE = OFF
@@ -2730,20 +2730,18 @@ void ADC_INIT(void) {
 
 
 void setup(void);
-void ADC(void);
-void OSCILADOR(void);
-void ADC_INTERRUPT(void);
-void ADC(void);
+uint8_t ADC_1(void);
 void INTER(void);
 
 char volt;
+uint8_t ADC = 0;
 
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
    if(SSPIF == 1){
-        PORTD = spiRead();
-        spiWrite(volt);
+
+        spiWrite(ADC);
         SSPIF = 0;
     }
 }
@@ -2752,17 +2750,16 @@ void __attribute__((picinterrupt(("")))) isr(void){
 
 void main(void) {
     setup();
-    OSCILADOR();
     INTER();
     ADC_INIT();
-    ADC_INTERRUPT();
 
 
 
 
     while(1){
-       ADC();
-
+       ADC_1();
+       ADC = ADC_1();
+       PORTD = ADC;
         _delay((unsigned long)((1)*(8000000/4000.0)));
     }
     return;
@@ -2771,12 +2768,13 @@ void main(void) {
 
 
 void setup(void){
-    ANSEL = 0;
+    ANSEL = 1;
     ANSELH = 0;
-    TRISA = 0;
+    TRISA = 1;
     TRISB = 0;
     TRISD = 0;
 
+    PORTA = 0;
     PORTB = 0;
     PORTD = 0;
 
@@ -2784,7 +2782,7 @@ void setup(void){
 
 }
 
-void ADC(void) {
+uint8_t ADC_1(void) {
     ADC_CHANNEL(0);
 
     ADCON0bits.ADCS0 = 1;
@@ -2795,22 +2793,10 @@ void ADC(void) {
     while (ADCON0bits.GO == 1) {
 
 
-        volt = ((ADRESH * 5.0) / 255);
+        return ADRESH;
     }
-
 }
 
-void OSCILADOR(void) {
-    OSCCON = 0b01110001;
-}
-
-
-void ADC_INTERRUPT() {
-    PIE1bits.ADIE = 0;
-    PIR1bits.ADIF = 0;
-    OPTION_REG = 0b00000000;
-    INTCON = 0b00000000;
-}
 
 void INTER(void){
     INTCONbits.GIE = 1;

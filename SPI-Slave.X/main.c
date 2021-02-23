@@ -2,7 +2,7 @@
 // Palabra de configuración
 //*****************************************************************************
 // CONFIG1
-#pragma config FOSC = EXTRC_NOCLKOUT// Oscillator Selection bits (RCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN)
+#pragma config FOSC = XT        // Oscillator Selection bits (RCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
 #pragma config MCLRE = OFF      // RE3/MCLR pin function select bit (RE3/MCLR pin function is digital input, MCLR internally tied to VDD)
@@ -36,20 +36,18 @@
 // contrario hay que colocarlos todas las funciones antes del main
 //*****************************************************************************
 void setup(void);
-void ADC(void);
-void OSCILADOR(void);
-void ADC_INTERRUPT(void);
-void ADC(void);//
+uint8_t ADC_1(void);//
 void INTER(void);
 
 char volt;
+uint8_t ADC = 0;
 //*****************************************************************************
 // Código de Interrupción 
 //*****************************************************************************
 void __interrupt() isr(void){
    if(SSPIF == 1){
-        PORTD = spiRead();
-        spiWrite(volt);
+        //PORTD = spiRead();
+        spiWrite(ADC);
         SSPIF = 0;
     }
 }
@@ -58,17 +56,16 @@ void __interrupt() isr(void){
 //*****************************************************************************
 void main(void) {
     setup();
-    OSCILADOR();
     INTER();
     ADC_INIT();
-    ADC_INTERRUPT();
     
     //*************************************************************************
     // Loop infinito
     //*************************************************************************
     while(1){
-       ADC(); 
-        //Mandar1();
+       ADC_1(); 
+       ADC = ADC_1();
+       PORTD = ADC;
         __delay_ms(1);
     }
     return;
@@ -77,12 +74,13 @@ void main(void) {
 // Función de Inicialización
 //*****************************************************************************
 void setup(void){
-    ANSEL = 0;
+    ANSEL = 1;
     ANSELH = 0;
-    TRISA = 0;
+    TRISA = 1;
     TRISB = 0;
     TRISD = 0;
     
+    PORTA = 0;
     PORTB = 0;
     PORTD = 0;
    
@@ -90,7 +88,7 @@ void setup(void){
 
 }
 
-void ADC(void) {
+uint8_t ADC_1(void) {
     ADC_CHANNEL(0); //canal 0
     //Cinfiguracion bits ADCON0
     ADCON0bits.ADCS0 = 1;//Clock ADC conversion
@@ -99,24 +97,12 @@ void ADC(void) {
     __delay_ms(0.25);//Para conversion
     ADCON0bits.GO = 1;  //Inicia la conversión
     while (ADCON0bits.GO == 1) {
-        //volt = ADRESH; //Desplegar ADRESH en result_adc
-        //PORTB = volt;
-        volt = ((ADRESH * 5.0) / 255); //CONVERSION DE  0-5V      
+        //volt = ADRESH; //Prueba desplegar ADRESH en volt
+        //PORTD = volt;
+        return  ADRESH;     
     }
-
 }
 
-void OSCILADOR(void) {
-    OSCCON = 0b01110001; //8MHz
-}
-
-//Se deshabilitan las interrupciones del ADC
-void ADC_INTERRUPT() { 
-    PIE1bits.ADIE = 0;
-    PIR1bits.ADIF = 0;
-    OPTION_REG = 0b00000000;
-    INTCON = 0b00000000;
-}
 
 void INTER(void){
     INTCONbits.GIE = 1;         // Habilitamos interrupciones
