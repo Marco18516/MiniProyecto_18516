@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Tue Feb 23 00:33:18 2021
+                                                                                               Tue Feb 23 18:25:32 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	16F887
@@ -575,7 +575,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    561 ;;
    562 ;; *************** function _main *****************
    563 ;; Defined at:
-   564 ;;		line 54 in file "SENSOR.c"
+   564 ;;		line 57 in file "SENSOR.c"
    565 ;; Parameters:    Size  Location     Type
    566 ;;		None
    567 ;; Auto vars:     Size  Location     Type
@@ -616,19 +616,19 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    602                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
    603                           
    604                           
-   605                           ;SENSOR.c: 55:     setup();
+   605                           ;SENSOR.c: 58:     setup();
    606  052F  120A  118A  2642  120A  118A  	fcall	_setup
    607  0534                     l1464:
    608                           
-   609                           ;SENSOR.c: 56:     INTER();
+   609                           ;SENSOR.c: 59:     INTER();
    610  0534  120A  118A  2672  120A  118A  	fcall	_INTER
    611  0539                     l1466:
    612                           
-   613                           ;SENSOR.c: 61:         ADC_2();
+   613                           ;SENSOR.c: 64:         ADC_2();
    614  0539  120A  118A  2605  120A  118A  	fcall	_ADC_2
    615  053E                     l1468:
    616                           
-   617                           ;SENSOR.c: 62:         ADC = ADC_2();
+   617                           ;SENSOR.c: 65:         ADC = ADC_2();
    618  053E  120A  118A  2605  120A  118A  	fcall	_ADC_2
    619  0543  1283               	bcf	3,5	;RP0=0, select bank0
    620  0544  1303               	bcf	3,6	;RP1=0, select bank0
@@ -637,7 +637,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    623  0547  00D1               	movwf	_ADC
    624  0548                     l1470:
    625                           
-   626                           ;SENSOR.c: 63:         T = (ADC*1.95);
+   626                           ;SENSOR.c: 66:         T = (ADC*1.95);
    627  0548  303F               	movlw	63
    628  0549  00B1               	movwf	___flmul@b+3
    629  054A  30F9               	movlw	249
@@ -684,7 +684,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    670  057B  00CC               	movwf	_T
    671  057C                     l1472:
    672                           
-   673                           ;SENSOR.c: 64:         Rango(T);
+   673                           ;SENSOR.c: 67:         Rango(T);
    674  057C  084F               	movf	_T+3,w
    675  057D  00A3               	movwf	___fltol@f1+3
    676  057E  084E               	movf	_T+2,w
@@ -706,7 +706,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    692  0642                     __ptext1:	
    693 ;; *************** function _setup *****************
    694 ;; Defined at:
-   695 ;;		line 78 in file "SENSOR.c"
+   695 ;;		line 85 in file "SENSOR.c"
    696 ;; Parameters:    Size  Location     Type
    697 ;;		None
    698 ;; Auto vars:     Size  Location     Type
@@ -742,42 +742,42 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    728                           ; Regs used in _setup: [wreg+status,2+status,0+pclath+cstack]
    729                           
    730                           
-   731                           ;SENSOR.c: 79:     ANSEL = 1;
+   731                           ;SENSOR.c: 86:     ANSEL = 1;
    732  0642  3001               	movlw	1
    733  0643  1683               	bsf	3,5	;RP0=1, select bank3
    734  0644  1703               	bsf	3,6	;RP1=1, select bank3
    735  0645  0088               	movwf	8	;volatile
    736  0646                     l1154:
    737                           
-   738                           ;SENSOR.c: 80:     ANSELH = 0;
+   738                           ;SENSOR.c: 87:     ANSELH = 0;
    739  0646  0189               	clrf	9	;volatile
    740  0647                     l1156:
    741                           
-   742                           ;SENSOR.c: 82:     TRISA = 0;
+   742                           ;SENSOR.c: 89:     TRISA = 0;
    743  0647  1683               	bsf	3,5	;RP0=1, select bank1
    744  0648  1303               	bcf	3,6	;RP1=0, select bank1
    745  0649  0185               	clrf	5	;volatile
    746  064A                     l1158:
    747                           
-   748                           ;SENSOR.c: 83:     TRISD = 0;
+   748                           ;SENSOR.c: 90:     TRISD = 0;
    749  064A  0188               	clrf	8	;volatile
    750  064B                     l1160:
    751                           
-   752                           ;SENSOR.c: 85:     PORTA = 0;
+   752                           ;SENSOR.c: 92:     PORTA = 0;
    753  064B  1283               	bcf	3,5	;RP0=0, select bank0
    754  064C  1303               	bcf	3,6	;RP1=0, select bank0
    755  064D  0185               	clrf	5	;volatile
    756  064E                     l1162:
    757                           
-   758                           ;SENSOR.c: 86:     PORTD = 0;
+   758                           ;SENSOR.c: 93:     PORTD = 0;
    759  064E  0188               	clrf	8	;volatile
    760  064F                     l1164:
    761                           
-   762                           ;SENSOR.c: 87:     PORTB = 0;
+   762                           ;SENSOR.c: 94:     PORTB = 0;
    763  064F  0186               	clrf	6	;volatile
    764  0650                     l1166:
    765                           
-   766                           ;SENSOR.c: 89:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
+   766                           ;SENSOR.c: 96:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
    767  0650  01A0               	clrf	spiInit@sDataSample
    768  0651  01A1               	clrf	spiInit@sClockIdle
    769  0652  01A2               	clrf	spiInit@sTransmitEdge
@@ -2500,7 +2500,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2484  05BE                     __ptext7:	
   2485 ;; *************** function _Rango *****************
   2486 ;; Defined at:
-  2487 ;;		line 67 in file "SENSOR.c"
+  2487 ;;		line 70 in file "SENSOR.c"
   2488 ;; Parameters:    Size  Location     Type
   2489 ;;  T               1    wreg     unsigned char 
   2490 ;; Auto vars:     Size  Location     Type
@@ -2540,7 +2540,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2524  05C0  00A0               	movwf	Rango@T
   2525  05C1                     l1186:
   2526                           
-  2527                           ;SENSOR.c: 68:     if (T < 25){
+  2527                           ;SENSOR.c: 72:     if (T < 25){
   2528  05C1  3019               	movlw	25
   2529  05C2  0220               	subwf	Rango@T,w
   2530  05C3  1803               	skipnc
@@ -2551,8 +2551,8 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2535  05C7                     u880:
   2536  05C7                     l1188:
   2537                           
-  2538                           ;SENSOR.c: 69:         PORTD = 1;}
-  2539  05C7  3001               	movlw	1
+  2538                           ;SENSOR.c: 73:         PORTD = 0b00100000;}
+  2539  05C7  3020               	movlw	32
   2540  05C8  0088               	movwf	8	;volatile
   2541  05C9  2DE1               	goto	l84
   2542  05CA                     l1190:
@@ -2575,8 +2575,8 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2559  05D6                     u900:
   2560  05D6                     l1194:
   2561                           
-  2562                           ;SENSOR.c: 71:         PORTD = 2;}
-  2563  05D6  3002               	movlw	2
+  2562                           ;SENSOR.c: 76:         PORTD = 0b01000000;}
+  2563  05D6  3040               	movlw	64
   2564  05D7  0088               	movwf	8	;volatile
   2565  05D8  2DE1               	goto	l84
   2566  05D9                     l1196:
@@ -2590,8 +2590,8 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2574  05DF                     u910:
   2575  05DF                     l1198:
   2576                           
-  2577                           ;SENSOR.c: 73:         PORTD = 4;}
-  2578  05DF  3004               	movlw	4
+  2577                           ;SENSOR.c: 79:         PORTD = 0b10000000;}
+  2578  05DF  3080               	movlw	128
   2579  05E0  0088               	movwf	8	;volatile
   2580  05E1                     l84:
   2581  05E1  0008               	return
@@ -2601,7 +2601,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2585  0672                     __ptext8:	
   2586 ;; *************** function _INTER *****************
   2587 ;; Defined at:
-  2588 ;;		line 94 in file "SENSOR.c"
+  2588 ;;		line 101 in file "SENSOR.c"
   2589 ;; Parameters:    Size  Location     Type
   2590 ;;		None
   2591 ;; Auto vars:     Size  Location     Type
@@ -2637,23 +2637,23 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2621                           ; Regs used in _INTER: []
   2622                           
   2623                           
-  2624                           ;SENSOR.c: 95:     INTCONbits.GIE = 1;
+  2624                           ;SENSOR.c: 102:     INTCONbits.GIE = 1;
   2625  0672  178B               	bsf	11,7	;volatile
   2626                           
-  2627                           ;SENSOR.c: 96:     INTCONbits.PEIE = 1;
+  2627                           ;SENSOR.c: 103:     INTCONbits.PEIE = 1;
   2628  0673  170B               	bsf	11,6	;volatile
   2629                           
-  2630                           ;SENSOR.c: 97:     PIR1bits.SSPIF = 0;
+  2630                           ;SENSOR.c: 104:     PIR1bits.SSPIF = 0;
   2631  0674  1283               	bcf	3,5	;RP0=0, select bank0
   2632  0675  1303               	bcf	3,6	;RP1=0, select bank0
   2633  0676  118C               	bcf	12,3	;volatile
   2634                           
-  2635                           ;SENSOR.c: 98:     PIE1bits.SSPIE = 1;
+  2635                           ;SENSOR.c: 105:     PIE1bits.SSPIE = 1;
   2636  0677  1683               	bsf	3,5	;RP0=1, select bank1
   2637  0678  1303               	bcf	3,6	;RP1=0, select bank1
   2638  0679  158C               	bsf	12,3	;volatile
   2639                           
-  2640                           ;SENSOR.c: 99:     TRISAbits.TRISA5 = 1;
+  2640                           ;SENSOR.c: 106:     TRISAbits.TRISA5 = 1;
   2641  067A  1685               	bsf	5,5	;volatile
   2642  067B                     l90:
   2643  067B  0008               	return
@@ -2663,7 +2663,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2647  0605                     __ptext9:	
   2648 ;; *************** function _ADC_2 *****************
   2649 ;; Defined at:
-  2650 ;;		line 102 in file "SENSOR.c"
+  2650 ;;		line 109 in file "SENSOR.c"
   2651 ;; Parameters:    Size  Location     Type
   2652 ;;		None
   2653 ;; Auto vars:     Size  Location     Type
@@ -2699,7 +2699,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2683                           ; Regs used in _ADC_2: [wreg-fsr0h+status,2+status,0+pclath+cstack]
   2684                           
   2685                           
-  2686                           ;SENSOR.c: 103:     ADC_CHANNEL(0);
+  2686                           ;SENSOR.c: 110:     ADC_CHANNEL(0);
   2687  0605  3000               	movlw	0
   2688  0606  1283               	bcf	3,5	;RP0=0, select bank0
   2689  0607  1303               	bcf	3,6	;RP1=0, select bank0
@@ -2708,21 +2708,21 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2692  060A  120A  118A  265A  120A  118A  	fcall	_ADC_CHANNEL
   2693  060F                     l1172:
   2694                           
-  2695                           ;SENSOR.c: 105:     ADCON0bits.ADCS0 = 1;
+  2695                           ;SENSOR.c: 112:     ADCON0bits.ADCS0 = 1;
   2696  060F  1283               	bcf	3,5	;RP0=0, select bank0
   2697  0610  1303               	bcf	3,6	;RP1=0, select bank0
   2698  0611  171F               	bsf	31,6	;volatile
   2699  0612                     l1174:
   2700                           
-  2701                           ;SENSOR.c: 106:     ADCON0bits.ADCS1 = 0;
+  2701                           ;SENSOR.c: 113:     ADCON0bits.ADCS1 = 0;
   2702  0612  139F               	bcf	31,7	;volatile
   2703  0613                     l1176:
   2704                           
-  2705                           ;SENSOR.c: 107:     ADCON0bits.ADON = 1;
+  2705                           ;SENSOR.c: 114:     ADCON0bits.ADON = 1;
   2706  0613  141F               	bsf	31,0	;volatile
   2707  0614                     l1178:
   2708                           
-  2709                           ;SENSOR.c: 108:     _delay((unsigned long)((0.25)*(8000000/4000.0)));
+  2709                           ;SENSOR.c: 115:     _delay((unsigned long)((0.25)*(8000000/4000.0)));
   2710  0614  30A5               	movlw	165
   2711  0615  1283               	bcf	3,5	;RP0=0, select bank0
   2712  0616  1303               	bcf	3,6	;RP1=0, select bank0
@@ -2733,15 +2733,15 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2717  061A  2E1B               	nop2
   2718  061B                     l1180:
   2719                           
-  2720                           ;SENSOR.c: 109:     ADCON0bits.GO = 1;
+  2720                           ;SENSOR.c: 116:     ADCON0bits.GO = 1;
   2721  061B  1283               	bcf	3,5	;RP0=0, select bank0
   2722  061C  1303               	bcf	3,6	;RP1=0, select bank0
   2723  061D  149F               	bsf	31,1	;volatile
   2724  061E                     l93:	
-  2725                           ;SENSOR.c: 111:     }
+  2725                           ;SENSOR.c: 118:     }
   2726                           
   2727                           
-  2728                           ;SENSOR.c: 110:     while (ADCON0bits.GO == 1){
+  2728                           ;SENSOR.c: 117:     while (ADCON0bits.GO == 1){
   2729  061E  189F               	btfsc	31,1	;volatile
   2730  061F  2E21               	goto	u871
   2731  0620  2E22               	goto	u870
@@ -2750,7 +2750,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2734  0622                     u870:
   2735  0622                     l1182:
   2736                           
-  2737                           ;SENSOR.c: 112:     return ADRESH;
+  2737                           ;SENSOR.c: 119:     return ADRESH;
   2738  0622  081E               	movf	30,w	;volatile
   2739  0623                     l96:
   2740  0623  0008               	return
@@ -2910,7 +2910,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2893  05E2                     _isr:
   2894  05E2                     i1l1456:
   2895                           
-  2896                           ;SENSOR.c: 46:     if(SSPIF == 1){
+  2896                           ;SENSOR.c: 47:     if(SSPIF == 1){
   2897  05E2  1283               	bcf	3,5	;RP0=0, select bank0
   2898  05E3  1303               	bcf	3,6	;RP1=0, select bank0
   2899  05E4  1D8C               	btfss	12,3	;volatile
@@ -2921,7 +2921,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2904  05E8                     u163_20:
   2905  05E8                     i1l1458:
   2906                           
-  2907                           ;SENSOR.c: 47:         spiWrite(T);
+  2907                           ;SENSOR.c: 49:         spiWrite(T);
   2908  05E8  084F               	movf	_T+3,w
   2909  05E9  00F3               	movwf	i1___fltol@f1+3
   2910  05EA  084E               	movf	_T+2,w
@@ -2935,7 +2935,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   2918  05F6  120A  118A  267C  120A  118A  	fcall	_spiWrite
   2919  05FB                     i1l1460:
   2920                           
-  2921                           ;SENSOR.c: 48:         SSPIF = 0;
+  2921                           ;SENSOR.c: 51:         SSPIF = 0;
   2922  05FB  1283               	bcf	3,5	;RP0=0, select bank0
   2923  05FC  1303               	bcf	3,6	;RP1=0, select bank0
   2924  05FD  118C               	bcf	12,3	;volatile
@@ -3423,7 +3423,7 @@ DATA                 0      0      40      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Tue Feb 23 00:33:18 2021
+Symbol Table                                                                                   Tue Feb 23 18:25:32 2021
 
                       _T 004C              _SSPSTATbits 0094                       l50 0660  
                      l51 0671                       l48 065B                       l90 067B  

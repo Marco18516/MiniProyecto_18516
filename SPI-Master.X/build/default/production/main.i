@@ -2909,7 +2909,8 @@ uint8_t cont = 0;
 uint8_t ADC1 = 0;
 uint8_t ADC2 = 0;
 char data[20];
-float volt,temp;
+float volt;
+float temp;
 
 
 
@@ -2940,24 +2941,26 @@ void main(void) {
         Lcd_Write_String("S1   S2   S3");
 
         temp = Sensor();
+
         sprintf(data, "%1.0f   %d   %3.0f" ,volt,cont,temp);
 
         Lcd_Set_Cursor(2,1);
+
         Lcd_Write_String(data);
 
         Write_USART_String("S1   S2   S3");
+
         Write_USART(13);
         Write_USART(10);
 
         Write_USART_String(data);
+
         Write_USART(13);
         Write_USART(10);
         _delay((unsigned long)((500)*(8000000/4000.0)));
     }
     return;
 }
-
-
 
 void setup(void){
     ANSEL = 0;
@@ -2974,10 +2977,10 @@ void setup(void){
     TRISC0 = 0;
     TRISC1 = 0;
     TRISC2 = 0;
-    PORTCbits.RC0 = 0;
-    PORTCbits.RC1 = 0;
-    PORTCbits.RC2 = 0;
-    PORTCbits.RC7 = 0;
+    PORTCbits.RC0 = 1;
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC2 = 1;
+    PORTCbits.RC7 = 1;
 
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 }
@@ -2991,6 +2994,7 @@ void leer_ADC(void){
     _delay((unsigned long)((1)*(8000000/4000.0)));
 
     spiWrite(1);
+
     volt = spiRead();
 
     _delay((unsigned long)((1)*(8000000/4000.0)));
@@ -3003,6 +3007,7 @@ void Conteo(void){
     _delay((unsigned long)((1)*(8000000/4000.0)));
 
     spiWrite(1);
+
     cont = spiRead();
 
     _delay((unsigned long)((1)*(8000000/4000.0)));
@@ -3015,6 +3020,7 @@ float Sensor(void){
     _delay((unsigned long)((1)*(8000000/4000.0)));
 
     spiWrite(1);
+
     temp = spiRead();
 
     _delay((unsigned long)((1)*(8000000/4000.0)));

@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Tue Feb 23 00:33:10 2021
+                                                                                               Tue Feb 23 18:26:44 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	16F887
@@ -324,7 +324,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    310  000F                     __initialization:
    311                           
    312                           ; Clear objects allocated to COMMON
-   313  000F  01FA               	clrf	__pbssCOMMON& (0+127)
+   313  000F  01F9               	clrf	__pbssCOMMON& (0+127)
    314  0010                     end_of_initialization:	
    315                           ;End of C runtime variable initialization code
    316                           
@@ -333,9 +333,9 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    319  0011  120A  118A  2814   	ljmp	_main	;jump to C main() function
    320                           
    321                           	psect	bssCOMMON
-   322  007A                     __pbssCOMMON:
-   323  007A                     _contador:
-   324  007A                     	ds	1
+   322  0079                     __pbssCOMMON:
+   323  0079                     _contador:
+   324  0079                     	ds	1
    325                           
    326                           	psect	cstackCOMMON
    327  0070                     __pcstackCOMMON:
@@ -396,16 +396,16 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    382                           
    383                           
    384                           ; 1 bytes @ 0x7
-   385  0077                     	ds	3
+   385  0077                     	ds	2
    386                           
    387                           	psect	maintext
    388  0014                     __pmaintext:	
    389 ;;
-   390 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   390 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
    391 ;;
    392 ;; *************** function _main *****************
    393 ;; Defined at:
-   394 ;;		line 50 in file "CONT.c"
+   394 ;;		line 53 in file "CONT.c"
    395 ;; Parameters:    Size  Location     Type
    396 ;;		None
    397 ;; Auto vars:     Size  Location     Type
@@ -421,9 +421,9 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    407 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
    408 ;;      Params:         0       0       0       0       0
    409 ;;      Locals:         0       0       0       0       0
-   410 ;;      Temps:          3       0       0       0       0
-   411 ;;      Totals:         3       0       0       0       0
-   412 ;;Total ram usage:        3 bytes
+   410 ;;      Temps:          2       0       0       0       0
+   411 ;;      Totals:         2       0       0       0       0
+   412 ;;Total ram usage:        2 bytes
    413 ;; Hardware stack levels required when called:    4
    414 ;; This function calls:
    415 ;;		_INTER
@@ -441,531 +441,523 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    427                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
    428                           
    429                           
-   430                           ;CONT.c: 51:     setup();
-   431  0014  120A  118A  205C  120A  118A  	fcall	_setup
+   430                           ;CONT.c: 54:     setup();
+   431  0014  120A  118A  2054  120A  118A  	fcall	_setup
    432  0019                     l796:
    433                           
-   434                           ;CONT.c: 52:     INTER();
-   435  0019  120A  118A  20A2  120A  118A  	fcall	_INTER
+   434                           ;CONT.c: 55:     INTER();
+   435  0019  120A  118A  209A  120A  118A  	fcall	_INTER
    436  001E                     l798:
    437                           
-   438                           ;CONT.c: 58:         if (PORTBbits.RB0 == 0){
+   438                           ;CONT.c: 61:         if (PORTBbits.RB6 == 0){
    439  001E  1283               	bcf	3,5	;RP0=0, select bank0
    440  001F  1303               	bcf	3,6	;RP1=0, select bank0
-   441  0020  1806               	btfsc	6,0	;volatile
+   441  0020  1B06               	btfsc	6,6	;volatile
    442  0021  2823               	goto	u91
    443  0022  2824               	goto	u90
    444  0023                     u91:
-   445  0023  283D               	goto	l808
+   445  0023  2839               	goto	l808
    446  0024                     u90:
    447  0024                     l800:
    448                           
-   449                           ;CONT.c: 59:             _delay((unsigned long)((100)*(8000000/4000.0)));
-   450  0024  3002               	movlw	2
-   451  0025  00F9               	movwf	??_main+2
-   452  0026  3004               	movlw	4
-   453  0027  00F8               	movwf	??_main+1
-   454  0028  30BA               	movlw	186
-   455  0029  00F7               	movwf	??_main
-   456  002A                     u137:
-   457  002A  0BF7               	decfsz	??_main,f
-   458  002B  282A               	goto	u137
-   459  002C  0BF8               	decfsz	??_main+1,f
-   460  002D  282A               	goto	u137
-   461  002E  0BF9               	decfsz	??_main+2,f
-   462  002F  282A               	goto	u137
-   463  0030  0000               	nop
-   464  0031                     l802:
-   465                           
-   466                           ;CONT.c: 60:             if (PORTBbits.RB0 == 1){
-   467  0031  1283               	bcf	3,5	;RP0=0, select bank0
-   468  0032  1303               	bcf	3,6	;RP1=0, select bank0
-   469  0033  1C06               	btfss	6,0	;volatile
-   470  0034  2836               	goto	u101
-   471  0035  2837               	goto	u100
-   472  0036                     u101:
-   473  0036  283D               	goto	l808
-   474  0037                     u100:
-   475  0037                     l804:
-   476                           
-   477                           ;CONT.c: 61:                 contador ++;
-   478  0037  3001               	movlw	1
-   479  0038  00F7               	movwf	??_main
-   480  0039  0877               	movf	??_main,w
-   481  003A  07FA               	addwf	_contador,f
-   482  003B                     l806:
-   483                           
-   484                           ;CONT.c: 62:                 PORTD = contador;
-   485  003B  087A               	movf	_contador,w
-   486  003C  0088               	movwf	8	;volatile
-   487  003D                     l808:
-   488                           
-   489                           ;CONT.c: 66:         if (PORTBbits.RB1 == 0){
-   490  003D  1886               	btfsc	6,1	;volatile
-   491  003E  2840               	goto	u111
-   492  003F  2841               	goto	u110
-   493  0040                     u111:
-   494  0040  281E               	goto	l798
-   495  0041                     u110:
-   496  0041                     l810:
-   497                           
-   498                           ;CONT.c: 67:             _delay((unsigned long)((100)*(8000000/4000.0)));
-   499  0041  3002               	movlw	2
-   500  0042  00F9               	movwf	??_main+2
-   501  0043  3004               	movlw	4
-   502  0044  00F8               	movwf	??_main+1
-   503  0045  30BA               	movlw	186
-   504  0046  00F7               	movwf	??_main
-   505  0047                     u147:
-   506  0047  0BF7               	decfsz	??_main,f
-   507  0048  2847               	goto	u147
-   508  0049  0BF8               	decfsz	??_main+1,f
-   509  004A  2847               	goto	u147
-   510  004B  0BF9               	decfsz	??_main+2,f
-   511  004C  2847               	goto	u147
-   512  004D  0000               	nop
-   513  004E                     l812:
-   514                           
-   515                           ;CONT.c: 68:             if (PORTBbits.RB1 == 1){
-   516  004E  1283               	bcf	3,5	;RP0=0, select bank0
-   517  004F  1303               	bcf	3,6	;RP1=0, select bank0
-   518  0050  1C86               	btfss	6,1	;volatile
-   519  0051  2853               	goto	u121
-   520  0052  2854               	goto	u120
-   521  0053                     u121:
-   522  0053  281E               	goto	l798
-   523  0054                     u120:
-   524  0054                     l814:
-   525                           
-   526                           ;CONT.c: 69:                 contador --;
-   527  0054  3001               	movlw	1
-   528  0055  02FA               	subwf	_contador,f
-   529  0056                     l816:
-   530                           
-   531                           ;CONT.c: 70:                 PORTD = contador;
-   532  0056  087A               	movf	_contador,w
-   533  0057  0088               	movwf	8	;volatile
-   534  0058  281E               	goto	l798
-   535  0059  120A  118A  280C   	ljmp	start
-   536  005C                     __end_of_main:
-   537                           
-   538                           	psect	text1
-   539  005C                     __ptext1:	
-   540 ;; *************** function _setup *****************
-   541 ;; Defined at:
-   542 ;;		line 78 in file "CONT.c"
-   543 ;; Parameters:    Size  Location     Type
-   544 ;;		None
-   545 ;; Auto vars:     Size  Location     Type
-   546 ;;		None
-   547 ;; Return value:  Size  Location     Type
-   548 ;;                  1    wreg      void 
-   549 ;; Registers used:
-   550 ;;		wreg, status,2, status,0, pclath, cstack
-   551 ;; Tracked objects:
-   552 ;;		On entry : 0/0
-   553 ;;		On exit  : 0/0
-   554 ;;		Unchanged: 0/0
-   555 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   556 ;;      Params:         0       0       0       0       0
-   557 ;;      Locals:         0       0       0       0       0
-   558 ;;      Temps:          0       0       0       0       0
-   559 ;;      Totals:         0       0       0       0       0
-   560 ;;Total ram usage:        0 bytes
-   561 ;; Hardware stack levels used:    1
-   562 ;; Hardware stack levels required when called:    3
-   563 ;; This function calls:
-   564 ;;		_spiInit
-   565 ;; This function is called by:
-   566 ;;		_main
-   567 ;; This function uses a non-reentrant model
-   568 ;;
+   449                           ;CONT.c: 62:             _delay((unsigned long)((70)*(8000000/4000.0)));
+   450  0024  30B6               	movlw	182
+   451  0025  00F8               	movwf	??_main+1
+   452  0026  30D0               	movlw	208
+   453  0027  00F7               	movwf	??_main
+   454  0028                     u137:
+   455  0028  0BF7               	decfsz	??_main,f
+   456  0029  2828               	goto	u137
+   457  002A  0BF8               	decfsz	??_main+1,f
+   458  002B  2828               	goto	u137
+   459  002C  0000               	nop
+   460  002D                     l802:
+   461                           
+   462                           ;CONT.c: 63:             if (PORTBbits.RB6 == 1){
+   463  002D  1283               	bcf	3,5	;RP0=0, select bank0
+   464  002E  1303               	bcf	3,6	;RP1=0, select bank0
+   465  002F  1F06               	btfss	6,6	;volatile
+   466  0030  2832               	goto	u101
+   467  0031  2833               	goto	u100
+   468  0032                     u101:
+   469  0032  2839               	goto	l808
+   470  0033                     u100:
+   471  0033                     l804:
+   472                           
+   473                           ;CONT.c: 64:                 contador ++;
+   474  0033  3001               	movlw	1
+   475  0034  00F7               	movwf	??_main
+   476  0035  0877               	movf	??_main,w
+   477  0036  07F9               	addwf	_contador,f
+   478  0037                     l806:
+   479                           
+   480                           ;CONT.c: 65:                 PORTD = contador;
+   481  0037  0879               	movf	_contador,w
+   482  0038  0088               	movwf	8	;volatile
+   483  0039                     l808:
+   484                           
+   485                           ;CONT.c: 69:         if (PORTBbits.RB7 == 0){
+   486  0039  1B86               	btfsc	6,7	;volatile
+   487  003A  283C               	goto	u111
+   488  003B  283D               	goto	u110
+   489  003C                     u111:
+   490  003C  281E               	goto	l798
+   491  003D                     u110:
+   492  003D                     l810:
+   493                           
+   494                           ;CONT.c: 70:             _delay((unsigned long)((70)*(8000000/4000.0)));
+   495  003D  30B6               	movlw	182
+   496  003E  00F8               	movwf	??_main+1
+   497  003F  30D0               	movlw	208
+   498  0040  00F7               	movwf	??_main
+   499  0041                     u147:
+   500  0041  0BF7               	decfsz	??_main,f
+   501  0042  2841               	goto	u147
+   502  0043  0BF8               	decfsz	??_main+1,f
+   503  0044  2841               	goto	u147
+   504  0045  0000               	nop
+   505  0046                     l812:
+   506                           
+   507                           ;CONT.c: 71:             if (PORTBbits.RB7 == 1){
+   508  0046  1283               	bcf	3,5	;RP0=0, select bank0
+   509  0047  1303               	bcf	3,6	;RP1=0, select bank0
+   510  0048  1F86               	btfss	6,7	;volatile
+   511  0049  284B               	goto	u121
+   512  004A  284C               	goto	u120
+   513  004B                     u121:
+   514  004B  281E               	goto	l798
+   515  004C                     u120:
+   516  004C                     l814:
+   517                           
+   518                           ;CONT.c: 72:                 contador --;
+   519  004C  3001               	movlw	1
+   520  004D  02F9               	subwf	_contador,f
+   521  004E                     l816:
+   522                           
+   523                           ;CONT.c: 73:                 PORTD = contador;
+   524  004E  0879               	movf	_contador,w
+   525  004F  0088               	movwf	8	;volatile
+   526  0050  281E               	goto	l798
+   527  0051  120A  118A  280C   	ljmp	start
+   528  0054                     __end_of_main:
+   529                           
+   530                           	psect	text1
+   531  0054                     __ptext1:	
+   532 ;; *************** function _setup *****************
+   533 ;; Defined at:
+   534 ;;		line 82 in file "CONT.c"
+   535 ;; Parameters:    Size  Location     Type
+   536 ;;		None
+   537 ;; Auto vars:     Size  Location     Type
+   538 ;;		None
+   539 ;; Return value:  Size  Location     Type
+   540 ;;                  1    wreg      void 
+   541 ;; Registers used:
+   542 ;;		wreg, status,2, status,0, pclath, cstack
+   543 ;; Tracked objects:
+   544 ;;		On entry : 0/0
+   545 ;;		On exit  : 0/0
+   546 ;;		Unchanged: 0/0
+   547 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   548 ;;      Params:         0       0       0       0       0
+   549 ;;      Locals:         0       0       0       0       0
+   550 ;;      Temps:          0       0       0       0       0
+   551 ;;      Totals:         0       0       0       0       0
+   552 ;;Total ram usage:        0 bytes
+   553 ;; Hardware stack levels used:    1
+   554 ;; Hardware stack levels required when called:    3
+   555 ;; This function calls:
+   556 ;;		_spiInit
+   557 ;; This function is called by:
+   558 ;;		_main
+   559 ;; This function uses a non-reentrant model
+   560 ;;
+   561                           
+   562                           
+   563                           ;psect for function _setup
+   564  0054                     _setup:
+   565  0054                     l776:	
+   566                           ;incstack = 0
+   567                           ; Regs used in _setup: [wreg+status,2+status,0+pclath+cstack]
+   568                           
    569                           
-   570                           
-   571                           ;psect for function _setup
-   572  005C                     _setup:
-   573  005C                     l776:	
-   574                           ;incstack = 0
-   575                           ; Regs used in _setup: [wreg+status,2+status,0+pclath+cstack]
-   576                           
-   577                           
-   578                           ;CONT.c: 79:     ANSEL = 0;
-   579  005C  1683               	bsf	3,5	;RP0=1, select bank3
-   580  005D  1703               	bsf	3,6	;RP1=1, select bank3
-   581  005E  0188               	clrf	8	;volatile
-   582                           
-   583                           ;CONT.c: 80:     ANSELH = 0;
-   584  005F  0189               	clrf	9	;volatile
-   585  0060                     l778:
-   586                           
-   587                           ;CONT.c: 81:     TRISA = 1;
-   588  0060  3001               	movlw	1
-   589  0061  1683               	bsf	3,5	;RP0=1, select bank1
-   590  0062  1303               	bcf	3,6	;RP1=0, select bank1
-   591  0063  0085               	movwf	5	;volatile
-   592  0064                     l780:
+   570                           ;CONT.c: 83:     ANSEL = 0;
+   571  0054  1683               	bsf	3,5	;RP0=1, select bank3
+   572  0055  1703               	bsf	3,6	;RP1=1, select bank3
+   573  0056  0188               	clrf	8	;volatile
+   574                           
+   575                           ;CONT.c: 84:     ANSELH = 0;
+   576  0057  0189               	clrf	9	;volatile
+   577  0058                     l778:
+   578                           
+   579                           ;CONT.c: 85:     TRISA = 1;
+   580  0058  3001               	movlw	1
+   581  0059  1683               	bsf	3,5	;RP0=1, select bank1
+   582  005A  1303               	bcf	3,6	;RP1=0, select bank1
+   583  005B  0085               	movwf	5	;volatile
+   584  005C                     l780:
+   585                           
+   586                           ;CONT.c: 86:     TRISBbits.TRISB0 = 1;
+   587  005C  1406               	bsf	6,0	;volatile
+   588  005D                     l782:
+   589                           
+   590                           ;CONT.c: 87:     TRISBbits.TRISB1 = 1;
+   591  005D  1486               	bsf	6,1	;volatile
+   592  005E                     l784:
    593                           
-   594                           ;CONT.c: 82:     TRISBbits.TRISB0 = 1;
-   595  0064  1406               	bsf	6,0	;volatile
-   596  0065                     l782:
+   594                           ;CONT.c: 88:     TRISD = 0;
+   595  005E  0188               	clrf	8	;volatile
+   596  005F                     l786:
    597                           
-   598                           ;CONT.c: 83:     TRISBbits.TRISB1 = 1;
-   599  0065  1486               	bsf	6,1	;volatile
-   600  0066                     l784:
-   601                           
-   602                           ;CONT.c: 84:     TRISD = 0;
-   603  0066  0188               	clrf	8	;volatile
-   604  0067                     l786:
-   605                           
-   606                           ;CONT.c: 87:     PORTA = 0;
-   607  0067  1283               	bcf	3,5	;RP0=0, select bank0
-   608  0068  1303               	bcf	3,6	;RP1=0, select bank0
-   609  0069  0185               	clrf	5	;volatile
-   610  006A                     l788:
+   598                           ;CONT.c: 91:     PORTA = 0;
+   599  005F  1283               	bcf	3,5	;RP0=0, select bank0
+   600  0060  1303               	bcf	3,6	;RP1=0, select bank0
+   601  0061  0185               	clrf	5	;volatile
+   602  0062                     l788:
+   603                           
+   604                           ;CONT.c: 92:     PORTB = 0;
+   605  0062  0186               	clrf	6	;volatile
+   606  0063                     l790:
+   607                           
+   608                           ;CONT.c: 93:     PORTD = 0;
+   609  0063  0188               	clrf	8	;volatile
+   610  0064                     l792:
    611                           
-   612                           ;CONT.c: 88:     PORTB = 0;
-   613  006A  0186               	clrf	6	;volatile
-   614  006B                     l790:
-   615                           
-   616                           ;CONT.c: 89:     PORTD = 0;
-   617  006B  0188               	clrf	8	;volatile
-   618  006C                     l792:
-   619                           
-   620                           ;CONT.c: 91:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,SPI
+   612                           ;CONT.c: 95:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,SPI
       +                          _IDLE_2_ACTIVE);
-   621  006C  01F3               	clrf	spiInit@sDataSample
-   622  006D  01F4               	clrf	spiInit@sClockIdle
-   623  006E  01F5               	clrf	spiInit@sTransmitEdge
-   624  006F  3024               	movlw	36
-   625  0070  120A  118A  2076  120A  118A  	fcall	_spiInit
-   626  0075                     l61:
-   627  0075  0008               	return
-   628  0076                     __end_of_setup:
-   629                           
-   630                           	psect	text2
-   631  0076                     __ptext2:	
-   632 ;; *************** function _spiInit *****************
-   633 ;; Defined at:
-   634 ;;		line 12 in file "SPI.c"
-   635 ;; Parameters:    Size  Location     Type
-   636 ;;  sType           1    wreg     enum E1264
-   637 ;;  sDataSample     1    3[COMMON] enum E1272
-   638 ;;  sClockIdle      1    4[COMMON] enum E1276
-   639 ;;  sTransmitEdg    1    5[COMMON] enum E1280
-   640 ;; Auto vars:     Size  Location     Type
-   641 ;;  sType           1    6[COMMON] enum E1264
-   642 ;; Return value:  Size  Location     Type
-   643 ;;                  1    wreg      void 
-   644 ;; Registers used:
-   645 ;;		wreg, status,2, status,0
-   646 ;; Tracked objects:
-   647 ;;		On entry : 0/0
-   648 ;;		On exit  : 0/0
-   649 ;;		Unchanged: 0/0
-   650 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   651 ;;      Params:         3       0       0       0       0
-   652 ;;      Locals:         1       0       0       0       0
-   653 ;;      Temps:          0       0       0       0       0
-   654 ;;      Totals:         4       0       0       0       0
-   655 ;;Total ram usage:        4 bytes
-   656 ;; Hardware stack levels used:    1
-   657 ;; Hardware stack levels required when called:    2
-   658 ;; This function calls:
-   659 ;;		Nothing
-   660 ;; This function is called by:
-   661 ;;		_setup
-   662 ;; This function uses a non-reentrant model
-   663 ;;
-   664                           
-   665                           
-   666                           ;psect for function _spiInit
-   667  0076                     _spiInit:
-   668                           
-   669                           ;incstack = 0
-   670                           ; Regs used in _spiInit: [wreg+status,2+status,0]
-   671                           ;spiInit@sType stored from wreg
-   672  0076  00F6               	movwf	spiInit@sType
-   673  0077                     l766:
-   674                           
-   675                           ;SPI.c: 12: void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sCl
+   613  0064  01F3               	clrf	spiInit@sDataSample
+   614  0065  01F4               	clrf	spiInit@sClockIdle
+   615  0066  01F5               	clrf	spiInit@sTransmitEdge
+   616  0067  3024               	movlw	36
+   617  0068  120A  118A  206E  120A  118A  	fcall	_spiInit
+   618  006D                     l61:
+   619  006D  0008               	return
+   620  006E                     __end_of_setup:
+   621                           
+   622                           	psect	text2
+   623  006E                     __ptext2:	
+   624 ;; *************** function _spiInit *****************
+   625 ;; Defined at:
+   626 ;;		line 12 in file "SPI.c"
+   627 ;; Parameters:    Size  Location     Type
+   628 ;;  sType           1    wreg     enum E1264
+   629 ;;  sDataSample     1    3[COMMON] enum E1272
+   630 ;;  sClockIdle      1    4[COMMON] enum E1276
+   631 ;;  sTransmitEdg    1    5[COMMON] enum E1280
+   632 ;; Auto vars:     Size  Location     Type
+   633 ;;  sType           1    6[COMMON] enum E1264
+   634 ;; Return value:  Size  Location     Type
+   635 ;;                  1    wreg      void 
+   636 ;; Registers used:
+   637 ;;		wreg, status,2, status,0
+   638 ;; Tracked objects:
+   639 ;;		On entry : 0/0
+   640 ;;		On exit  : 0/0
+   641 ;;		Unchanged: 0/0
+   642 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   643 ;;      Params:         3       0       0       0       0
+   644 ;;      Locals:         1       0       0       0       0
+   645 ;;      Temps:          0       0       0       0       0
+   646 ;;      Totals:         4       0       0       0       0
+   647 ;;Total ram usage:        4 bytes
+   648 ;; Hardware stack levels used:    1
+   649 ;; Hardware stack levels required when called:    2
+   650 ;; This function calls:
+   651 ;;		Nothing
+   652 ;; This function is called by:
+   653 ;;		_setup
+   654 ;; This function uses a non-reentrant model
+   655 ;;
+   656                           
+   657                           
+   658                           ;psect for function _spiInit
+   659  006E                     _spiInit:
+   660                           
+   661                           ;incstack = 0
+   662                           ; Regs used in _spiInit: [wreg+status,2+status,0]
+   663                           ;spiInit@sType stored from wreg
+   664  006E  00F6               	movwf	spiInit@sType
+   665  006F                     l766:
+   666                           
+   667                           ;SPI.c: 12: void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sCl
       +                          ockIdle, Spi_Transmit_Edge sTransmitEdge);SPI.c: 13: {;SPI.c: 14:     TRISC5 = 0;
-   676  0077  1683               	bsf	3,5	;RP0=1, select bank1
-   677  0078  1303               	bcf	3,6	;RP1=0, select bank1
-   678  0079  1287               	bcf	7,5	;volatile
-   679                           
-   680                           ;SPI.c: 15:     if(sType & 0b00000100)
-   681  007A  1D76               	btfss	spiInit@sType,2
-   682  007B  287D               	goto	u81
-   683  007C  287E               	goto	u80
-   684  007D                     u81:
-   685  007D  2882               	goto	l772
-   686  007E                     u80:
-   687  007E                     l768:
+   668  006F  1683               	bsf	3,5	;RP0=1, select bank1
+   669  0070  1303               	bcf	3,6	;RP1=0, select bank1
+   670  0071  1287               	bcf	7,5	;volatile
+   671                           
+   672                           ;SPI.c: 15:     if(sType & 0b00000100)
+   673  0072  1D76               	btfss	spiInit@sType,2
+   674  0073  2875               	goto	u81
+   675  0074  2876               	goto	u80
+   676  0075                     u81:
+   677  0075  287A               	goto	l772
+   678  0076                     u80:
+   679  0076                     l768:
+   680                           
+   681                           ;SPI.c: 16:     {;SPI.c: 17:         SSPSTAT = sTransmitEdge;
+   682  0076  0875               	movf	spiInit@sTransmitEdge,w
+   683  0077  0094               	movwf	20	;volatile
+   684  0078                     l770:
+   685                           
+   686                           ;SPI.c: 18:         TRISC3 = 1;
+   687  0078  1587               	bsf	7,3	;volatile
    688                           
-   689                           ;SPI.c: 16:     {;SPI.c: 17:         SSPSTAT = sTransmitEdge;
-   690  007E  0875               	movf	spiInit@sTransmitEdge,w
-   691  007F  0094               	movwf	20	;volatile
-   692  0080                     l770:
-   693                           
-   694                           ;SPI.c: 18:         TRISC3 = 1;
-   695  0080  1587               	bsf	7,3	;volatile
-   696                           
-   697                           ;SPI.c: 19:     }
-   698  0081  2886               	goto	l80
-   699  0082                     l772:
-   700                           
-   701                           ;SPI.c: 21:     {;SPI.c: 22:         SSPSTAT = sDataSample | sTransmitEdge;
-   702  0082  0873               	movf	spiInit@sDataSample,w
-   703  0083  0475               	iorwf	spiInit@sTransmitEdge,w
-   704  0084  0094               	movwf	20	;volatile
-   705  0085                     l774:
-   706                           
-   707                           ;SPI.c: 23:         TRISC3 = 0;
-   708  0085  1187               	bcf	7,3	;volatile
-   709  0086                     l80:	
-   710                           ;SPI.c: 24:     }
-   711                           
-   712                           
-   713                           ;SPI.c: 26:     SSPCON = sType | sClockIdle;
-   714  0086  0876               	movf	spiInit@sType,w
-   715  0087  0474               	iorwf	spiInit@sClockIdle,w
-   716  0088  1283               	bcf	3,5	;RP0=0, select bank0
-   717  0089  1303               	bcf	3,6	;RP1=0, select bank0
-   718  008A  0094               	movwf	20	;volatile
-   719  008B                     l81:
-   720  008B  0008               	return
-   721  008C                     __end_of_spiInit:
-   722                           
-   723                           	psect	text3
-   724  00A2                     __ptext3:	
-   725 ;; *************** function _INTER *****************
-   726 ;; Defined at:
-   727 ;;		line 95 in file "CONT.c"
-   728 ;; Parameters:    Size  Location     Type
-   729 ;;		None
-   730 ;; Auto vars:     Size  Location     Type
-   731 ;;		None
-   732 ;; Return value:  Size  Location     Type
-   733 ;;                  1    wreg      void 
-   734 ;; Registers used:
-   735 ;;		None
-   736 ;; Tracked objects:
-   737 ;;		On entry : 0/0
-   738 ;;		On exit  : 0/0
-   739 ;;		Unchanged: 0/0
-   740 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   741 ;;      Params:         0       0       0       0       0
-   742 ;;      Locals:         0       0       0       0       0
-   743 ;;      Temps:          0       0       0       0       0
-   744 ;;      Totals:         0       0       0       0       0
-   745 ;;Total ram usage:        0 bytes
-   746 ;; Hardware stack levels used:    1
-   747 ;; Hardware stack levels required when called:    2
-   748 ;; This function calls:
-   749 ;;		Nothing
-   750 ;; This function is called by:
-   751 ;;		_main
-   752 ;; This function uses a non-reentrant model
-   753 ;;
+   689                           ;SPI.c: 19:     }
+   690  0079  287E               	goto	l80
+   691  007A                     l772:
+   692                           
+   693                           ;SPI.c: 21:     {;SPI.c: 22:         SSPSTAT = sDataSample | sTransmitEdge;
+   694  007A  0873               	movf	spiInit@sDataSample,w
+   695  007B  0475               	iorwf	spiInit@sTransmitEdge,w
+   696  007C  0094               	movwf	20	;volatile
+   697  007D                     l774:
+   698                           
+   699                           ;SPI.c: 23:         TRISC3 = 0;
+   700  007D  1187               	bcf	7,3	;volatile
+   701  007E                     l80:	
+   702                           ;SPI.c: 24:     }
+   703                           
+   704                           
+   705                           ;SPI.c: 26:     SSPCON = sType | sClockIdle;
+   706  007E  0876               	movf	spiInit@sType,w
+   707  007F  0474               	iorwf	spiInit@sClockIdle,w
+   708  0080  1283               	bcf	3,5	;RP0=0, select bank0
+   709  0081  1303               	bcf	3,6	;RP1=0, select bank0
+   710  0082  0094               	movwf	20	;volatile
+   711  0083                     l81:
+   712  0083  0008               	return
+   713  0084                     __end_of_spiInit:
+   714                           
+   715                           	psect	text3
+   716  009A                     __ptext3:	
+   717 ;; *************** function _INTER *****************
+   718 ;; Defined at:
+   719 ;;		line 99 in file "CONT.c"
+   720 ;; Parameters:    Size  Location     Type
+   721 ;;		None
+   722 ;; Auto vars:     Size  Location     Type
+   723 ;;		None
+   724 ;; Return value:  Size  Location     Type
+   725 ;;                  1    wreg      void 
+   726 ;; Registers used:
+   727 ;;		None
+   728 ;; Tracked objects:
+   729 ;;		On entry : 0/0
+   730 ;;		On exit  : 0/0
+   731 ;;		Unchanged: 0/0
+   732 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   733 ;;      Params:         0       0       0       0       0
+   734 ;;      Locals:         0       0       0       0       0
+   735 ;;      Temps:          0       0       0       0       0
+   736 ;;      Totals:         0       0       0       0       0
+   737 ;;Total ram usage:        0 bytes
+   738 ;; Hardware stack levels used:    1
+   739 ;; Hardware stack levels required when called:    2
+   740 ;; This function calls:
+   741 ;;		Nothing
+   742 ;; This function is called by:
+   743 ;;		_main
+   744 ;; This function uses a non-reentrant model
+   745 ;;
+   746                           
+   747                           
+   748                           ;psect for function _INTER
+   749  009A                     _INTER:
+   750  009A                     l720:	
+   751                           ;incstack = 0
+   752                           ; Regs used in _INTER: []
+   753                           
    754                           
-   755                           
-   756                           ;psect for function _INTER
-   757  00A2                     _INTER:
-   758  00A2                     l720:	
-   759                           ;incstack = 0
-   760                           ; Regs used in _INTER: []
-   761                           
-   762                           
-   763                           ;CONT.c: 96:     INTCONbits.GIE = 1;
-   764  00A2  178B               	bsf	11,7	;volatile
+   755                           ;CONT.c: 100:     INTCONbits.GIE = 1;
+   756  009A  178B               	bsf	11,7	;volatile
+   757                           
+   758                           ;CONT.c: 101:     INTCONbits.PEIE = 1;
+   759  009B  170B               	bsf	11,6	;volatile
+   760                           
+   761                           ;CONT.c: 102:     PIR1bits.SSPIF = 0;
+   762  009C  1283               	bcf	3,5	;RP0=0, select bank0
+   763  009D  1303               	bcf	3,6	;RP1=0, select bank0
+   764  009E  118C               	bcf	12,3	;volatile
    765                           
-   766                           ;CONT.c: 97:     INTCONbits.PEIE = 1;
-   767  00A3  170B               	bsf	11,6	;volatile
-   768                           
-   769                           ;CONT.c: 98:     PIR1bits.SSPIF = 0;
-   770  00A4  1283               	bcf	3,5	;RP0=0, select bank0
-   771  00A5  1303               	bcf	3,6	;RP1=0, select bank0
-   772  00A6  118C               	bcf	12,3	;volatile
-   773                           
-   774                           ;CONT.c: 99:     PIE1bits.SSPIE = 1;
-   775  00A7  1683               	bsf	3,5	;RP0=1, select bank1
-   776  00A8  1303               	bcf	3,6	;RP1=0, select bank1
-   777  00A9  158C               	bsf	12,3	;volatile
-   778                           
-   779                           ;CONT.c: 100:     TRISAbits.TRISA5 = 1;
-   780  00AA  1685               	bsf	5,5	;volatile
-   781  00AB                     l64:
-   782  00AB  0008               	return
-   783  00AC                     __end_of_INTER:
-   784                           
-   785                           	psect	text4
-   786  008C                     __ptext4:	
-   787 ;; *************** function _isr *****************
-   788 ;; Defined at:
-   789 ;;		line 41 in file "CONT.c"
-   790 ;; Parameters:    Size  Location     Type
-   791 ;;		None
-   792 ;; Auto vars:     Size  Location     Type
-   793 ;;		None
-   794 ;; Return value:  Size  Location     Type
-   795 ;;                  1    wreg      void 
-   796 ;; Registers used:
-   797 ;;		wreg, status,2, status,0, pclath, cstack
-   798 ;; Tracked objects:
-   799 ;;		On entry : 0/0
-   800 ;;		On exit  : 0/0
-   801 ;;		Unchanged: 0/0
-   802 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   803 ;;      Params:         0       0       0       0       0
-   804 ;;      Locals:         0       0       0       0       0
-   805 ;;      Temps:          2       0       0       0       0
-   806 ;;      Totals:         2       0       0       0       0
-   807 ;;Total ram usage:        2 bytes
-   808 ;; Hardware stack levels used:    1
-   809 ;; Hardware stack levels required when called:    1
-   810 ;; This function calls:
-   811 ;;		_spiWrite
-   812 ;; This function is called by:
-   813 ;;		Interrupt level 1
-   814 ;; This function uses a non-reentrant model
-   815 ;;
-   816                           
-   817                           
-   818                           ;psect for function _isr
-   819  008C                     _isr:
-   820  008C                     i1l724:
-   821                           
-   822                           ;CONT.c: 42:     if(SSPIF == 1){
-   823  008C  1283               	bcf	3,5	;RP0=0, select bank0
-   824  008D  1303               	bcf	3,6	;RP1=0, select bank0
-   825  008E  1D8C               	btfss	12,3	;volatile
-   826  008F  2891               	goto	u3_21
-   827  0090  2892               	goto	u3_20
-   828  0091                     u3_21:
-   829  0091  289B               	goto	i1l46
-   830  0092                     u3_20:
-   831  0092                     i1l726:
-   832                           
-   833                           ;CONT.c: 43:         spiWrite(contador);
-   834  0092  087A               	movf	_contador,w
-   835  0093  120A  118A  20AC  120A  118A  	fcall	_spiWrite
-   836  0098                     i1l728:
-   837                           
-   838                           ;CONT.c: 44:         SSPIF = 0;
-   839  0098  1283               	bcf	3,5	;RP0=0, select bank0
-   840  0099  1303               	bcf	3,6	;RP1=0, select bank0
-   841  009A  118C               	bcf	12,3	;volatile
-   842  009B                     i1l46:
-   843  009B  0872               	movf	??_isr+1,w
-   844  009C  008A               	movwf	10
-   845  009D  0E71               	swapf	??_isr,w
-   846  009E  0083               	movwf	3
-   847  009F  0EFE               	swapf	btemp,f
-   848  00A0  0E7E               	swapf	btemp,w
-   849  00A1  0009               	retfie
-   850  00A2                     __end_of_isr:
-   851                           
-   852                           	psect	intentry
-   853  0004                     __pintentry:	
-   854                           ;incstack = 0
-   855                           ; Regs used in _isr: [wreg+status,2+status,0+pclath+cstack]
-   856                           
-   857  0004                     interrupt_function:
-   858  007E                     saved_w	set	btemp
-   859  0004  00FE               	movwf	btemp
-   860  0005  0E03               	swapf	3,w
-   861  0006  00F1               	movwf	??_isr
-   862  0007  080A               	movf	10,w
-   863  0008  00F2               	movwf	??_isr+1
-   864  0009  120A  118A  288C   	ljmp	_isr
-   865                           
-   866                           	psect	text5
-   867  00AC                     __ptext5:	
-   868 ;; *************** function _spiWrite *****************
-   869 ;; Defined at:
-   870 ;;		line 34 in file "SPI.c"
-   871 ;; Parameters:    Size  Location     Type
-   872 ;;  dat             1    wreg     unsigned char 
-   873 ;; Auto vars:     Size  Location     Type
-   874 ;;  dat             1    0[COMMON] unsigned char 
-   875 ;; Return value:  Size  Location     Type
-   876 ;;                  1    wreg      void 
-   877 ;; Registers used:
-   878 ;;		wreg
-   879 ;; Tracked objects:
-   880 ;;		On entry : 0/0
-   881 ;;		On exit  : 0/0
-   882 ;;		Unchanged: 0/0
-   883 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   884 ;;      Params:         0       0       0       0       0
-   885 ;;      Locals:         1       0       0       0       0
-   886 ;;      Temps:          0       0       0       0       0
-   887 ;;      Totals:         1       0       0       0       0
-   888 ;;Total ram usage:        1 bytes
-   889 ;; Hardware stack levels used:    1
-   890 ;; This function calls:
-   891 ;;		Nothing
-   892 ;; This function is called by:
-   893 ;;		_isr
-   894 ;; This function uses a non-reentrant model
-   895 ;;
-   896                           
-   897                           
-   898                           ;psect for function _spiWrite
-   899  00AC                     _spiWrite:
-   900                           
-   901                           ;incstack = 0
-   902                           ; Regs used in _spiWrite: [wreg]
-   903                           ;spiWrite@dat stored from wreg
-   904  00AC  00F0               	movwf	spiWrite@dat
-   905  00AD                     i1l700:
-   906                           
-   907                           ;SPI.c: 34: void spiWrite(char dat);SPI.c: 35: {;SPI.c: 36:     SSPBUF = dat;
-   908  00AD  0870               	movf	spiWrite@dat,w
-   909  00AE  1283               	bcf	3,5	;RP0=0, select bank0
-   910  00AF  1303               	bcf	3,6	;RP1=0, select bank0
-   911  00B0  0093               	movwf	19	;volatile
-   912  00B1                     i1l90:
-   913  00B1  0008               	return
-   914  00B2                     __end_of_spiWrite:
-   915  007E                     btemp	set	126	;btemp
-   916  007E                     wtemp0	set	126
-   917                           
-   918                           	psect	config
-   919                           
-   920                           ;Config register CONFIG1 @ 0x2007
-   921                           ;	Oscillator Selection bits
-   922                           ;	FOSC = XT, XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN
-   923                           ;	Watchdog Timer Enable bit
-   924                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
-   925                           ;	Power-up Timer Enable bit
-   926                           ;	PWRTE = OFF, PWRT disabled
-   927                           ;	RE3/MCLR pin function select bit
-   928                           ;	MCLRE = OFF, RE3/MCLR pin function is digital input, MCLR internally tied to VDD
-   929                           ;	Code Protection bit
-   930                           ;	CP = OFF, Program memory code protection is disabled
-   931                           ;	Data Code Protection bit
-   932                           ;	CPD = OFF, Data memory code protection is disabled
-   933                           ;	Brown Out Reset Selection bits
-   934                           ;	BOREN = OFF, BOR disabled
-   935                           ;	Internal External Switchover bit
-   936                           ;	IESO = OFF, Internal/External Switchover mode is disabled
-   937                           ;	Fail-Safe Clock Monitor Enabled bit
-   938                           ;	FCMEN = OFF, Fail-Safe Clock Monitor is disabled
-   939                           ;	Low Voltage Programming Enable bit
-   940                           ;	LVP = OFF, RB3 pin has digital I/O, HV on MCLR must be used for programming
-   941                           ;	In-Circuit Debugger Mode bit
-   942                           ;	DEBUG = 0x1, unprogrammed default
-   943  2007                     	org	8199
-   944  2007  20D1               	dw	8401
-   945                           
-   946                           ;Config register CONFIG2 @ 0x2008
-   947                           ;	Brown-out Reset Selection bit
-   948                           ;	BOR4V = BOR40V, Brown-out Reset set to 4.0V
-   949                           ;	Flash Program Memory Self Write Enable bits
-   950                           ;	WRT = OFF, Write protection off
-   951  2008                     	org	8200
-   952  2008  3FFF               	dw	16383
+   766                           ;CONT.c: 103:     PIE1bits.SSPIE = 1;
+   767  009F  1683               	bsf	3,5	;RP0=1, select bank1
+   768  00A0  1303               	bcf	3,6	;RP1=0, select bank1
+   769  00A1  158C               	bsf	12,3	;volatile
+   770                           
+   771                           ;CONT.c: 104:     TRISAbits.TRISA5 = 1;
+   772  00A2  1685               	bsf	5,5	;volatile
+   773  00A3                     l64:
+   774  00A3  0008               	return
+   775  00A4                     __end_of_INTER:
+   776                           
+   777                           	psect	text4
+   778  0084                     __ptext4:	
+   779 ;; *************** function _isr *****************
+   780 ;; Defined at:
+   781 ;;		line 41 in file "CONT.c"
+   782 ;; Parameters:    Size  Location     Type
+   783 ;;		None
+   784 ;; Auto vars:     Size  Location     Type
+   785 ;;		None
+   786 ;; Return value:  Size  Location     Type
+   787 ;;                  1    wreg      void 
+   788 ;; Registers used:
+   789 ;;		wreg, status,2, status,0, pclath, cstack
+   790 ;; Tracked objects:
+   791 ;;		On entry : 0/0
+   792 ;;		On exit  : 0/0
+   793 ;;		Unchanged: 0/0
+   794 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   795 ;;      Params:         0       0       0       0       0
+   796 ;;      Locals:         0       0       0       0       0
+   797 ;;      Temps:          2       0       0       0       0
+   798 ;;      Totals:         2       0       0       0       0
+   799 ;;Total ram usage:        2 bytes
+   800 ;; Hardware stack levels used:    1
+   801 ;; Hardware stack levels required when called:    1
+   802 ;; This function calls:
+   803 ;;		_spiWrite
+   804 ;; This function is called by:
+   805 ;;		Interrupt level 1
+   806 ;; This function uses a non-reentrant model
+   807 ;;
+   808                           
+   809                           
+   810                           ;psect for function _isr
+   811  0084                     _isr:
+   812  0084                     i1l724:
+   813                           
+   814                           ;CONT.c: 43:     if(SSPIF == 1){
+   815  0084  1283               	bcf	3,5	;RP0=0, select bank0
+   816  0085  1303               	bcf	3,6	;RP1=0, select bank0
+   817  0086  1D8C               	btfss	12,3	;volatile
+   818  0087  2889               	goto	u3_21
+   819  0088  288A               	goto	u3_20
+   820  0089                     u3_21:
+   821  0089  2893               	goto	i1l46
+   822  008A                     u3_20:
+   823  008A                     i1l726:
+   824                           
+   825                           ;CONT.c: 45:         spiWrite(contador);
+   826  008A  0879               	movf	_contador,w
+   827  008B  120A  118A  20A4  120A  118A  	fcall	_spiWrite
+   828  0090                     i1l728:
+   829                           
+   830                           ;CONT.c: 47:         SSPIF = 0;
+   831  0090  1283               	bcf	3,5	;RP0=0, select bank0
+   832  0091  1303               	bcf	3,6	;RP1=0, select bank0
+   833  0092  118C               	bcf	12,3	;volatile
+   834  0093                     i1l46:
+   835  0093  0872               	movf	??_isr+1,w
+   836  0094  008A               	movwf	10
+   837  0095  0E71               	swapf	??_isr,w
+   838  0096  0083               	movwf	3
+   839  0097  0EFE               	swapf	btemp,f
+   840  0098  0E7E               	swapf	btemp,w
+   841  0099  0009               	retfie
+   842  009A                     __end_of_isr:
+   843                           
+   844                           	psect	intentry
+   845  0004                     __pintentry:	
+   846                           ;incstack = 0
+   847                           ; Regs used in _isr: [wreg+status,2+status,0+pclath+cstack]
+   848                           
+   849  0004                     interrupt_function:
+   850  007E                     saved_w	set	btemp
+   851  0004  00FE               	movwf	btemp
+   852  0005  0E03               	swapf	3,w
+   853  0006  00F1               	movwf	??_isr
+   854  0007  080A               	movf	10,w
+   855  0008  00F2               	movwf	??_isr+1
+   856  0009  120A  118A  2884   	ljmp	_isr
+   857                           
+   858                           	psect	text5
+   859  00A4                     __ptext5:	
+   860 ;; *************** function _spiWrite *****************
+   861 ;; Defined at:
+   862 ;;		line 34 in file "SPI.c"
+   863 ;; Parameters:    Size  Location     Type
+   864 ;;  dat             1    wreg     unsigned char 
+   865 ;; Auto vars:     Size  Location     Type
+   866 ;;  dat             1    0[COMMON] unsigned char 
+   867 ;; Return value:  Size  Location     Type
+   868 ;;                  1    wreg      void 
+   869 ;; Registers used:
+   870 ;;		wreg
+   871 ;; Tracked objects:
+   872 ;;		On entry : 0/0
+   873 ;;		On exit  : 0/0
+   874 ;;		Unchanged: 0/0
+   875 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   876 ;;      Params:         0       0       0       0       0
+   877 ;;      Locals:         1       0       0       0       0
+   878 ;;      Temps:          0       0       0       0       0
+   879 ;;      Totals:         1       0       0       0       0
+   880 ;;Total ram usage:        1 bytes
+   881 ;; Hardware stack levels used:    1
+   882 ;; This function calls:
+   883 ;;		Nothing
+   884 ;; This function is called by:
+   885 ;;		_isr
+   886 ;; This function uses a non-reentrant model
+   887 ;;
+   888                           
+   889                           
+   890                           ;psect for function _spiWrite
+   891  00A4                     _spiWrite:
+   892                           
+   893                           ;incstack = 0
+   894                           ; Regs used in _spiWrite: [wreg]
+   895                           ;spiWrite@dat stored from wreg
+   896  00A4  00F0               	movwf	spiWrite@dat
+   897  00A5                     i1l700:
+   898                           
+   899                           ;SPI.c: 34: void spiWrite(char dat);SPI.c: 35: {;SPI.c: 36:     SSPBUF = dat;
+   900  00A5  0870               	movf	spiWrite@dat,w
+   901  00A6  1283               	bcf	3,5	;RP0=0, select bank0
+   902  00A7  1303               	bcf	3,6	;RP1=0, select bank0
+   903  00A8  0093               	movwf	19	;volatile
+   904  00A9                     i1l90:
+   905  00A9  0008               	return
+   906  00AA                     __end_of_spiWrite:
+   907  007E                     btemp	set	126	;btemp
+   908  007E                     wtemp0	set	126
+   909                           
+   910                           	psect	config
+   911                           
+   912                           ;Config register CONFIG1 @ 0x2007
+   913                           ;	Oscillator Selection bits
+   914                           ;	FOSC = XT, XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN
+   915                           ;	Watchdog Timer Enable bit
+   916                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
+   917                           ;	Power-up Timer Enable bit
+   918                           ;	PWRTE = OFF, PWRT disabled
+   919                           ;	RE3/MCLR pin function select bit
+   920                           ;	MCLRE = OFF, RE3/MCLR pin function is digital input, MCLR internally tied to VDD
+   921                           ;	Code Protection bit
+   922                           ;	CP = OFF, Program memory code protection is disabled
+   923                           ;	Data Code Protection bit
+   924                           ;	CPD = OFF, Data memory code protection is disabled
+   925                           ;	Brown Out Reset Selection bits
+   926                           ;	BOREN = OFF, BOR disabled
+   927                           ;	Internal External Switchover bit
+   928                           ;	IESO = OFF, Internal/External Switchover mode is disabled
+   929                           ;	Fail-Safe Clock Monitor Enabled bit
+   930                           ;	FCMEN = OFF, Fail-Safe Clock Monitor is disabled
+   931                           ;	Low Voltage Programming Enable bit
+   932                           ;	LVP = OFF, RB3 pin has digital I/O, HV on MCLR must be used for programming
+   933                           ;	In-Circuit Debugger Mode bit
+   934                           ;	DEBUG = 0x1, unprogrammed default
+   935  2007                     	org	8199
+   936  2007  20D1               	dw	8401
+   937                           
+   938                           ;Config register CONFIG2 @ 0x2008
+   939                           ;	Brown-out Reset Selection bit
+   940                           ;	BOR4V = BOR40V, Brown-out Reset set to 4.0V
+   941                           ;	Flash Program Memory Self Write Enable bits
+   942                           ;	WRT = OFF, Write protection off
+   943  2008                     	org	8200
+   944  2008  3FFF               	dw	16383
 
 Data Sizes:
     Strings     0
@@ -977,7 +969,7 @@ Data Sizes:
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMMON           14     10      11
+    COMMON           14      9      10
     BANK0            80      0       0
     BANK1            80      0       0
     BANK3            96      0       0
@@ -1032,8 +1024,8 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 3     3      0     360
-                                              7 COMMON     3     3      0
+ (0) _main                                                 2     2      0     360
+                                              7 COMMON     2     2      0
                               _INTER
                               _setup
  ---------------------------------------------------------------------------------
@@ -1075,13 +1067,13 @@ BITCOMMON            E      0       0       0        0.0%
 EEDATA             100      0       0       0        0.0%
 NULL                 0      0       0       0        0.0%
 CODE                 0      0       0       0        0.0%
-COMMON               E      A       B       1       78.6%
+COMMON               E      9       A       1       71.4%
 BITSFR0              0      0       0       1        0.0%
 SFR0                 0      0       0       1        0.0%
 BITSFR1              0      0       0       2        0.0%
 SFR1                 0      0       0       2        0.0%
 STACK                0      0       0       2        0.0%
-ABS                  0      0       B       3        0.0%
+ABS                  0      0       A       3        0.0%
 BITBANK0            50      0       0       4        0.0%
 BITSFR3              0      0       0       4        0.0%
 SFR3                 0      0       0       4        0.0%
@@ -1094,52 +1086,52 @@ BITBANK3            60      0       0       8        0.0%
 BANK3               60      0       0       9        0.0%
 BITBANK2            60      0       0      10        0.0%
 BANK2               60      0       0      11        0.0%
-DATA                 0      0       B      12        0.0%
+DATA                 0      0       A      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Tue Feb 23 00:33:10 2021
+Symbol Table                                                                                   Tue Feb 23 18:26:44 2021
 
-            _SSPSTATbits 0094                       l61 0075                       l64 00AB  
-                     l80 0086                       l81 008B                       u80 007E  
-                     u81 007D                       u90 0024                       u91 0023  
-                    l720 00A2                      l800 0024                      l810 0041  
-                    l802 0031                      l812 004E                      l804 0037  
-                    l814 0054                      l806 003B                      l816 0056  
-                    l808 003D                      l770 0080                      l772 0082  
-                    l780 0064                      l774 0085                      l766 0077  
-                    l790 006B                      l782 0065                      l768 007E  
-                    l792 006C                      l784 0066                      l776 005C  
-                    l786 0067                      l778 0060                      l794 0014  
-                    l788 006A                      l796 0019                      l798 001E  
-                    u100 0037                      u101 0036                      u110 0041  
-                    u111 0040                      u120 0054                      u121 0053  
-                    u137 002A                      u147 0047                      _isr 008C  
-                   ?_isr 0070                     i1l46 009B                     i1l90 00B1  
-                   u3_20 0092                     u3_21 0091                     _main 0014  
+            _SSPSTATbits 0094                       l61 006D                       l64 00A3  
+                     l80 007E                       l81 0083                       u80 0076  
+                     u81 0075                       u90 0024                       u91 0023  
+                    l720 009A                      l800 0024                      l810 003D  
+                    l802 002D                      l812 0046                      l804 0033  
+                    l814 004C                      l806 0037                      l816 004E  
+                    l808 0039                      l770 0078                      l772 007A  
+                    l780 005C                      l774 007D                      l766 006F  
+                    l790 0063                      l782 005D                      l768 0076  
+                    l792 0064                      l784 005E                      l776 0054  
+                    l786 005F                      l778 0058                      l794 0014  
+                    l788 0062                      l796 0019                      l798 001E  
+                    u100 0033                      u101 0032                      u110 003D  
+                    u111 003C                      u120 004C                      u121 004B  
+                    u137 0028                      u147 0041                      _isr 0084  
+                   ?_isr 0070                     i1l46 0093                     i1l90 00A9  
+                   u3_20 008A                     u3_21 0089                     _main 0014  
                    btemp 007E                     start 000C                    ??_isr 0071  
-                  ?_main 0070                    _ANSEL 0188                    i1l700 00AD  
-                  i1l724 008C                    i1l726 0092                    i1l728 0098  
-                  _INTER 00A2                    _PORTA 0005                    _PORTB 0006  
+                  ?_main 0070                    _ANSEL 0188                    i1l700 00A5  
+                  i1l724 0084                    i1l726 008A                    i1l728 0090  
+                  _INTER 009A                    _PORTA 0005                    _PORTB 0006  
                   _PORTD 0008                    _TRISA 0085                    _TRISD 0088  
-                  _SSPIF 0063                    _setup 005C                    pclath 000A  
-        __end_of_spiInit 008C                    status 0003                    wtemp0 007E  
-        __initialization 000F             __end_of_main 005C                   ??_main 0077  
+                  _SSPIF 0063                    _setup 0054                    pclath 000A  
+        __end_of_spiInit 0084                    status 0003                    wtemp0 007E  
+        __initialization 000F             __end_of_main 0054                   ??_main 0077  
                  ?_INTER 0070                   ?_setup 0070                   _ANSELH 0189  
                  _TRISC3 043B                   _TRISC5 043D                   _SSPCON 0014  
-                 _SSPBUF 0013                   saved_w 007E         __end_of_spiWrite 00B2  
-              ??_spiInit 0076  __end_of__initialization 0010            __end_of_INTER 00AC  
-         __pcstackCOMMON 0070            __end_of_setup 0076                  ??_INTER 0073  
+                 _SSPBUF 0013                   saved_w 007E         __end_of_spiWrite 00AA  
+              ??_spiInit 0076  __end_of__initialization 0010            __end_of_INTER 00A4  
+         __pcstackCOMMON 0070            __end_of_setup 006E                  ??_INTER 0073  
                 ??_setup 0077               __pmaintext 0014               __pintentry 0004  
-                _SSPSTAT 0094                ?_spiWrite 0070                  __ptext1 005C  
-                __ptext2 0076                  __ptext3 00A2                  __ptext4 008C  
-                __ptext5 00AC             __size_of_isr 0016                  _spiInit 0076  
+                _SSPSTAT 0094                ?_spiWrite 0070                  __ptext1 0054  
+                __ptext2 006E                  __ptext3 009A                  __ptext4 0084  
+                __ptext5 00A4             __size_of_isr 0016                  _spiInit 006E  
    end_of_initialization 0010               ??_spiWrite 0070                _PORTBbits 0006  
               _TRISAbits 0085                _TRISBbits 0086              spiWrite@dat 0070  
-    start_initialization 000F              __end_of_isr 00A2              __pbssCOMMON 007A  
+    start_initialization 000F              __end_of_isr 009A              __pbssCOMMON 0079  
               ___latbits 0002        __size_of_spiWrite 0006           __size_of_INTER 000A  
                ?_spiInit 0073           __size_of_setup 001A     spiInit@sTransmitEdge 0075  
       interrupt_function 0004                 _PIE1bits 008C       spiInit@sDataSample 0073  
-               _PIR1bits 000C         __size_of_spiInit 0016                 _contador 007A  
-          __size_of_main 0048                 _spiWrite 00AC             spiInit@sType 0076  
+               _PIR1bits 000C         __size_of_spiInit 0016                 _contador 0079  
+          __size_of_main 0040                 _spiWrite 00A4             spiInit@sType 0076  
       spiInit@sClockIdle 0074               _INTCONbits 000B                 intlevel1 0000  

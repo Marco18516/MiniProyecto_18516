@@ -67,8 +67,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "228
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
-"89 SENSOR.c
-[; ;SENSOR.c: 89:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
+"96 SENSOR.c
+[; ;SENSOR.c: 96:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
 [c E1295 32 33 34 35 36 37 .. ]
 [n E1295 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
 [c E1303 0 128 .. ]
@@ -485,206 +485,206 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _isr ]
 [f ]
-"46
-[; ;SENSOR.c: 46:     if(SSPIF == 1){
+"47
+[; ;SENSOR.c: 47:     if(SSPIF == 1){
 [e $ ! == -> _SSPIF `i -> 1 `i 145  ]
 {
-"47
-[; ;SENSOR.c: 47:         spiWrite(T);
-[e ( _spiWrite (1 -> _T `uc ]
-"48
-[; ;SENSOR.c: 48:         SSPIF = 0;
-[e = _SSPIF -> -> 0 `i `b ]
 "49
-[; ;SENSOR.c: 49:     }
+[; ;SENSOR.c: 49:         spiWrite(T);
+[e ( _spiWrite (1 -> _T `uc ]
+"51
+[; ;SENSOR.c: 51:         SSPIF = 0;
+[e = _SSPIF -> -> 0 `i `b ]
+"52
+[; ;SENSOR.c: 52:     }
 }
 [e :U 145 ]
-"50
-[; ;SENSOR.c: 50: }
+"53
+[; ;SENSOR.c: 53: }
 [e :UE 144 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"54
-[; ;SENSOR.c: 54: void main(void){
+"57
+[; ;SENSOR.c: 57: void main(void){
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"55
-[; ;SENSOR.c: 55:     setup();
+"58
+[; ;SENSOR.c: 58:     setup();
 [e ( _setup ..  ]
-"56
-[; ;SENSOR.c: 56:     INTER();
+"59
+[; ;SENSOR.c: 59:     INTER();
 [e ( _INTER ..  ]
-"60
-[; ;SENSOR.c: 60:     while(1){
+"63
+[; ;SENSOR.c: 63:     while(1){
 [e :U 148 ]
 {
-"61
-[; ;SENSOR.c: 61:         ADC_2();
-[e ( _ADC_2 ..  ]
-"62
-[; ;SENSOR.c: 62:         ADC = ADC_2();
-[e = _ADC ( _ADC_2 ..  ]
-"63
-[; ;SENSOR.c: 63:         T = (ADC*1.95);
-[e = _T -> * -> -> _ADC `i `d .1.95 `f ]
 "64
-[; ;SENSOR.c: 64:         Rango(T);
-[e ( _Rango (1 -> _T `uc ]
+[; ;SENSOR.c: 64:         ADC_2();
+[e ( _ADC_2 ..  ]
 "65
-[; ;SENSOR.c: 65:     }
+[; ;SENSOR.c: 65:         ADC = ADC_2();
+[e = _ADC ( _ADC_2 ..  ]
+"66
+[; ;SENSOR.c: 66:         T = (ADC*1.95);
+[e = _T -> * -> -> _ADC `i `d .1.95 `f ]
+"67
+[; ;SENSOR.c: 67:         Rango(T);
+[e ( _Rango (1 -> _T `uc ]
+"68
+[; ;SENSOR.c: 68:     }
 }
 [e :U 147 ]
 [e $U 148  ]
 [e :U 149 ]
-"66
-[; ;SENSOR.c: 66: }
+"69
+[; ;SENSOR.c: 69: }
 [e :UE 146 ]
 }
-"67
-[; ;SENSOR.c: 67: void Rango(uint8_t T){
+"70
+[; ;SENSOR.c: 70: void Rango(uint8_t T){
 [v _Rango `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Rango ]
 [v _T `uc ~T0 @X0 1 r1 ]
 [f ]
-"68
-[; ;SENSOR.c: 68:     if (T < 25){
+"72
+[; ;SENSOR.c: 72:     if (T < 25){
 [e $ ! < -> _T `i -> 25 `i 151  ]
 {
-"69
-[; ;SENSOR.c: 69:         PORTD = 1;}
-[e = _PORTD -> -> 1 `i `uc ]
+"73
+[; ;SENSOR.c: 73:         PORTD = 0b00100000;}
+[e = _PORTD -> -> 32 `i `uc ]
 }
 [e $U 152  ]
-"70
-[; ;SENSOR.c: 70:     else if (T > 25 && T < 36){
+"75
+[; ;SENSOR.c: 75:     else if (T > 25 && T < 36){
 [e :U 151 ]
 [e $ ! && > -> _T `i -> 25 `i < -> _T `i -> 36 `i 153  ]
 {
-"71
-[; ;SENSOR.c: 71:         PORTD = 2;}
-[e = _PORTD -> -> 2 `i `uc ]
+"76
+[; ;SENSOR.c: 76:         PORTD = 0b01000000;}
+[e = _PORTD -> -> 64 `i `uc ]
 }
 [e $U 154  ]
-"72
-[; ;SENSOR.c: 72:     else if (T > 36){
+"78
+[; ;SENSOR.c: 78:     else if (T > 36){
 [e :U 153 ]
 [e $ ! > -> _T `i -> 36 `i 155  ]
 {
-"73
-[; ;SENSOR.c: 73:         PORTD = 4;}
-[e = _PORTD -> -> 4 `i `uc ]
+"79
+[; ;SENSOR.c: 79:         PORTD = 0b10000000;}
+[e = _PORTD -> -> 128 `i `uc ]
 }
 [e :U 155 ]
 [e :U 154 ]
 [e :U 152 ]
-"74
-[; ;SENSOR.c: 74: }
+"80
+[; ;SENSOR.c: 80: }
 [e :UE 150 ]
 }
-"78
-[; ;SENSOR.c: 78: void setup(void){
+"85
+[; ;SENSOR.c: 85: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"79
-[; ;SENSOR.c: 79:     ANSEL = 1;
-[e = _ANSEL -> -> 1 `i `uc ]
-"80
-[; ;SENSOR.c: 80:     ANSELH = 0;
-[e = _ANSELH -> -> 0 `i `uc ]
-"82
-[; ;SENSOR.c: 82:     TRISA = 0;
-[e = _TRISA -> -> 0 `i `uc ]
-"83
-[; ;SENSOR.c: 83:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
-"85
-[; ;SENSOR.c: 85:     PORTA = 0;
-[e = _PORTA -> -> 0 `i `uc ]
 "86
-[; ;SENSOR.c: 86:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;SENSOR.c: 86:     ANSEL = 1;
+[e = _ANSEL -> -> 1 `i `uc ]
 "87
-[; ;SENSOR.c: 87:     PORTB = 0;
-[e = _PORTB -> -> 0 `i `uc ]
+[; ;SENSOR.c: 87:     ANSELH = 0;
+[e = _ANSELH -> -> 0 `i `uc ]
 "89
-[; ;SENSOR.c: 89:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
-[e ( _spiInit (4 , , , . `E1295 4 . `E1303 0 . `E1307 1 . `E1311 0 ]
+[; ;SENSOR.c: 89:     TRISA = 0;
+[e = _TRISA -> -> 0 `i `uc ]
+"90
+[; ;SENSOR.c: 90:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
 "92
-[; ;SENSOR.c: 92: }
+[; ;SENSOR.c: 92:     PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
+"93
+[; ;SENSOR.c: 93:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
+"94
+[; ;SENSOR.c: 94:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
+"96
+[; ;SENSOR.c: 96:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
+[e ( _spiInit (4 , , , . `E1295 4 . `E1303 0 . `E1307 1 . `E1311 0 ]
+"99
+[; ;SENSOR.c: 99: }
 [e :UE 156 ]
 }
-"94
-[; ;SENSOR.c: 94: void INTER(void){
+"101
+[; ;SENSOR.c: 101: void INTER(void){
 [v _INTER `(v ~T0 @X0 1 ef ]
 {
 [e :U _INTER ]
 [f ]
-"95
-[; ;SENSOR.c: 95:     INTCONbits.GIE = 1;
+"102
+[; ;SENSOR.c: 102:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"96
-[; ;SENSOR.c: 96:     INTCONbits.PEIE = 1;
+"103
+[; ;SENSOR.c: 103:     INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"97
-[; ;SENSOR.c: 97:     PIR1bits.SSPIF = 0;
+"104
+[; ;SENSOR.c: 104:     PIR1bits.SSPIF = 0;
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"98
-[; ;SENSOR.c: 98:     PIE1bits.SSPIE = 1;
+"105
+[; ;SENSOR.c: 105:     PIE1bits.SSPIE = 1;
 [e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
-"99
-[; ;SENSOR.c: 99:     TRISAbits.TRISA5 = 1;
+"106
+[; ;SENSOR.c: 106:     TRISAbits.TRISA5 = 1;
 [e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
-"100
-[; ;SENSOR.c: 100: }
+"107
+[; ;SENSOR.c: 107: }
 [e :UE 157 ]
 }
-"102
-[; ;SENSOR.c: 102: uint8_t ADC_2(void){
+"109
+[; ;SENSOR.c: 109: uint8_t ADC_2(void){
 [v _ADC_2 `(uc ~T0 @X0 1 ef ]
 {
 [e :U _ADC_2 ]
 [f ]
-"103
-[; ;SENSOR.c: 103:     ADC_CHANNEL(0);
-[e ( _ADC_CHANNEL (1 -> -> 0 `i `us ]
-"105
-[; ;SENSOR.c: 105:     ADCON0bits.ADCS0 = 1;
-[e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
-"106
-[; ;SENSOR.c: 106:     ADCON0bits.ADCS1 = 0;
-[e = . . _ADCON0bits 1 7 -> -> 0 `i `uc ]
-"107
-[; ;SENSOR.c: 107:     ADCON0bits.ADON = 1;
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
-"108
-[; ;SENSOR.c: 108:     _delay((unsigned long)((0.25)*(8000000/4000.0)));
-[e ( __delay (1 -> * .0.25 / -> -> 8000000 `l `d .4000.0 `ul ]
-"109
-[; ;SENSOR.c: 109:     ADCON0bits.GO = 1;
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
 "110
-[; ;SENSOR.c: 110:     while (ADCON0bits.GO == 1){
+[; ;SENSOR.c: 110:     ADC_CHANNEL(0);
+[e ( _ADC_CHANNEL (1 -> -> 0 `i `us ]
+"112
+[; ;SENSOR.c: 112:     ADCON0bits.ADCS0 = 1;
+[e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
+"113
+[; ;SENSOR.c: 113:     ADCON0bits.ADCS1 = 0;
+[e = . . _ADCON0bits 1 7 -> -> 0 `i `uc ]
+"114
+[; ;SENSOR.c: 114:     ADCON0bits.ADON = 1;
+[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+"115
+[; ;SENSOR.c: 115:     _delay((unsigned long)((0.25)*(8000000/4000.0)));
+[e ( __delay (1 -> * .0.25 / -> -> 8000000 `l `d .4000.0 `ul ]
+"116
+[; ;SENSOR.c: 116:     ADCON0bits.GO = 1;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"117
+[; ;SENSOR.c: 117:     while (ADCON0bits.GO == 1){
 [e $U 159  ]
 [e :U 160 ]
 {
-"111
-[; ;SENSOR.c: 111:     }
+"118
+[; ;SENSOR.c: 118:     }
 }
 [e :U 159 ]
-"110
-[; ;SENSOR.c: 110:     while (ADCON0bits.GO == 1){
+"117
+[; ;SENSOR.c: 117:     while (ADCON0bits.GO == 1){
 [e $ == -> . . _ADCON0bits 1 1 `i -> 1 `i 160  ]
 [e :U 161 ]
-"112
-[; ;SENSOR.c: 112:     return ADRESH;
+"119
+[; ;SENSOR.c: 119:     return ADRESH;
 [e ) _ADRESH ]
 [e $UE 158  ]
-"113
-[; ;SENSOR.c: 113: }
+"120
+[; ;SENSOR.c: 120: }
 [e :UE 158 ]
 }

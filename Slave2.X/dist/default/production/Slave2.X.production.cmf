@@ -11,21 +11,21 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\steff\AppData\Local\Temp\s734.o
+$C:\Users\steff\AppData\Local\Temp\s7s8.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
 $dist/default/production\Slave2.X.production.o
 cinit CODE 0 F F 5 2
-text1 CODE 0 5C 5C 1A 2
-text2 CODE 0 76 76 16 2
-text3 CODE 0 A2 A2 A 2
-text4 CODE 0 8C 8C 16 2
-text5 CODE 0 AC AC 6 2
-maintext CODE 0 14 14 48 2
-cstackCOMMON COMMON 1 70 70 A 1
+text1 CODE 0 54 54 1A 2
+text2 CODE 0 6E 6E 16 2
+text3 CODE 0 9A 9A A 2
+text4 CODE 0 84 84 16 2
+text5 CODE 0 A4 A4 6 2
+maintext CODE 0 14 14 40 2
+cstackCOMMON COMMON 1 70 70 9 1
 intentry CODE 0 4 4 8 2
-bssCOMMON COMMON 1 7A 7A 1 1
+bssCOMMON COMMON 1 79 79 1 1
 config CONFIG 4 2007 2007 2 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -42,23 +42,23 @@ BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST B2-1FFF 2
+CONST AA-1FFF 2
 ENTRY 3-3 2
-ENTRY B2-1FFF 2
+ENTRY AA-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE B2-1FFF 2
+CODE AA-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
 SFR3 180-18F 1
-COMMON 7B-7D 1
+COMMON 7A-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE B2-1FFF 2
+STRCODE AA-1FFF 2
 STRING 3-3 2
-STRING B2-1FFF 2
+STRING AA-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -73,64 +73,64 @@ STRING B2-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Slave2.X.production.o
-F cinit CODE >627:C:\Users\steff\AppData\Local\Temp\s734.s
-F cinit CODE >630:C:\Users\steff\AppData\Local\Temp\s734.s
-F cinit CODE >641:C:\Users\steff\AppData\Local\Temp\s734.s
-10 cinit CODE >647:C:\Users\steff\AppData\Local\Temp\s734.s
-10 cinit CODE >649:C:\Users\steff\AppData\Local\Temp\s734.s
-11 cinit CODE >650:C:\Users\steff\AppData\Local\Temp\s734.s
+F cinit CODE >627:C:\Users\steff\AppData\Local\Temp\s7s8.s
+F cinit CODE >630:C:\Users\steff\AppData\Local\Temp\s7s8.s
+F cinit CODE >641:C:\Users\steff\AppData\Local\Temp\s7s8.s
+10 cinit CODE >647:C:\Users\steff\AppData\Local\Temp\s7s8.s
+10 cinit CODE >649:C:\Users\steff\AppData\Local\Temp\s7s8.s
+11 cinit CODE >650:C:\Users\steff\AppData\Local\Temp\s7s8.s
 4 intentry CODE >41:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-AC text5 CODE >34:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-AD text5 CODE >36:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-B1 text5 CODE >37:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-8C text4 CODE >41:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-8C text4 CODE >42:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-92 text4 CODE >43:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-98 text4 CODE >44:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-9B text4 CODE >46:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-A2 text3 CODE >95:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-A2 text3 CODE >96:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-A3 text3 CODE >97:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-A4 text3 CODE >98:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-A7 text3 CODE >99:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-AA text3 CODE >100:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-AB text3 CODE >101:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-76 text2 CODE >12:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-77 text2 CODE >14:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-7A text2 CODE >15:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-7E text2 CODE >17:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-80 text2 CODE >18:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-81 text2 CODE >19:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-82 text2 CODE >22:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-85 text2 CODE >23:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-86 text2 CODE >24:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-86 text2 CODE >26:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-8B text2 CODE >27:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
-5C text1 CODE >78:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-5C text1 CODE >79:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-5F text1 CODE >80:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-60 text1 CODE >81:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-64 text1 CODE >82:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-65 text1 CODE >83:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-66 text1 CODE >84:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-67 text1 CODE >87:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-6A text1 CODE >88:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-6B text1 CODE >89:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-6C text1 CODE >91:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-75 text1 CODE >93:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-14 maintext CODE >50:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-14 maintext CODE >51:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-19 maintext CODE >52:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-1E maintext CODE >58:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-24 maintext CODE >59:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-31 maintext CODE >60:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-37 maintext CODE >61:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-3B maintext CODE >62:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-3D maintext CODE >66:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-41 maintext CODE >67:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-4E maintext CODE >68:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-54 maintext CODE >69:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
-56 maintext CODE >70:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+A4 text5 CODE >34:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+A5 text5 CODE >36:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+A9 text5 CODE >37:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+84 text4 CODE >41:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+84 text4 CODE >43:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+8A text4 CODE >45:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+90 text4 CODE >47:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+93 text4 CODE >49:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+9A text3 CODE >99:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+9A text3 CODE >100:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+9B text3 CODE >101:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+9C text3 CODE >102:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+9F text3 CODE >103:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+A2 text3 CODE >104:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+A3 text3 CODE >105:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+6E text2 CODE >12:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+6F text2 CODE >14:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+72 text2 CODE >15:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+76 text2 CODE >17:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+78 text2 CODE >18:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+79 text2 CODE >19:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+7A text2 CODE >22:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+7D text2 CODE >23:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+7E text2 CODE >24:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+7E text2 CODE >26:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+83 text2 CODE >27:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\SPI.c
+54 text1 CODE >82:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+54 text1 CODE >83:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+57 text1 CODE >84:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+58 text1 CODE >85:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+5C text1 CODE >86:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+5D text1 CODE >87:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+5E text1 CODE >88:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+5F text1 CODE >91:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+62 text1 CODE >92:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+63 text1 CODE >93:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+64 text1 CODE >95:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+6D text1 CODE >97:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+14 maintext CODE >53:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+14 maintext CODE >54:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+19 maintext CODE >55:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+1E maintext CODE >61:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+24 maintext CODE >62:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+2D maintext CODE >63:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+33 maintext CODE >64:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+37 maintext CODE >65:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+39 maintext CODE >69:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+3D maintext CODE >70:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+46 maintext CODE >71:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+4C maintext CODE >72:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
+4E maintext CODE >73:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\Slave2.X\CONT.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -144,27 +144,27 @@ AB text3 CODE >101:C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyec
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 ___latbits 2 0 ABS 0 - dist/default/production\Slave2.X.production.o
-__Hspace_0 B2 0 ABS 0 - -
-__Hspace_1 7B 0 ABS 0 - -
+__Hspace_0 AA 0 ABS 0 - -
+__Hspace_1 7A 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 spiInit@sTransmitEdge 75 0 COMMON 1 cstackCOMMON dist/default/production\Slave2.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\steff\AppData\Local\Temp\s734.o
+___sp 0 0 STACK 2 stack C:\Users\steff\AppData\Local\Temp\s7s8.o
 _main 28 0 CODE 0 maintext dist/default/production\Slave2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Slave2.X.production.o
-start 18 0 CODE 0 init C:\Users\steff\AppData\Local\Temp\s734.o
+start 18 0 CODE 0 init C:\Users\steff\AppData\Local\Temp\s7s8.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Slave2.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s734.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s734.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s734.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s734.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s734.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s734.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s7s8.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s7s8.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s7s8.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s7s8.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s7s8.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\steff\AppData\Local\Temp\s7s8.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Slave2.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -172,8 +172,8 @@ __Hclrtext 0 0 ABS 0 clrtext -
 _ANSELH 189 0 ABS 0 - dist/default/production\Slave2.X.production.o
 __size_of_spiInit 0 0 ABS 0 - dist/default/production\Slave2.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\steff\AppData\Local\Temp\s734.o
-___stacklo 0 0 ABS 0 - C:\Users\steff\AppData\Local\Temp\s734.o
+___stackhi 0 0 ABS 0 - C:\Users\steff\AppData\Local\Temp\s7s8.o
+___stacklo 0 0 ABS 0 - C:\Users\steff\AppData\Local\Temp\s7s8.o
 __size_of_INTER 0 0 ABS 0 - dist/default/production\Slave2.X.production.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\Slave2.X.production.o
 spiInit@sDataSample 73 0 COMMON 1 cstackCOMMON dist/default/production\Slave2.X.production.o
@@ -184,7 +184,7 @@ _SSPBUF 13 0 ABS 0 - dist/default/production\Slave2.X.production.o
 _SSPCON 14 0 ABS 0 - dist/default/production\Slave2.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\Slave2.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\Slave2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\steff\AppData\Local\Temp\s734.o
+___int_sp 0 0 STACK 2 stack C:\Users\steff\AppData\Local\Temp\s7s8.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -192,7 +192,7 @@ __Hbank3 0 0 ABS 0 bank3 -
 __Hcinit 28 0 CODE 0 cinit -
 __Hstack 0 0 STACK 2 stack -
 __Hmaintext 0 0 ABS 0 maintext -
-__end_of_spiInit 118 0 CODE 0 text2 dist/default/production\Slave2.X.production.o
+__end_of_spiInit 108 0 CODE 0 text2 dist/default/production\Slave2.X.production.o
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 4012 0 CONFIG 4 config -
 __Lbank0 0 0 ABS 0 bank0 -
@@ -220,15 +220,15 @@ __Lsfr2 0 0 ABS 0 sfr2 -
 __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-__S0 B2 0 ABS 0 - -
-__S1 7B 0 ABS 0 - -
+__S0 AA 0 ABS 0 - -
+__S1 7A 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_isr 118 0 CODE 0 text4 dist/default/production\Slave2.X.production.o
+_isr 108 0 CODE 0 text4 dist/default/production\Slave2.X.production.o
 saved_w 7E 0 ABS 0 - dist/default/production\Slave2.X.production.o
-__end_of_isr 144 0 CODE 0 text4 dist/default/production\Slave2.X.production.o
+__end_of_isr 134 0 CODE 0 text4 dist/default/production\Slave2.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\steff\AppData\Local\Temp\s734.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\steff\AppData\Local\Temp\s7s8.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Slave2.X.production.o
 __pmaintext 28 0 CODE 0 maintext dist/default/production\Slave2.X.production.o
 __Lcommon 0 0 ABS 0 common -
@@ -238,7 +238,7 @@ __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
-__pbssCOMMON 7A 0 COMMON 1 bssCOMMON dist/default/production\Slave2.X.production.o
+__pbssCOMMON 79 0 COMMON 1 bssCOMMON dist/default/production\Slave2.X.production.o
 _PIR1bits C 0 ABS 0 - dist/default/production\Slave2.X.production.o
 __Lend_init 18 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
@@ -246,12 +246,12 @@ end_of_initialization 20 0 CODE 0 cinit dist/default/production\Slave2.X.product
 __Hintentry 18 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 6 0 CODE 0 reset_vec -
-__ptext1 B8 0 CODE 0 text1 dist/default/production\Slave2.X.production.o
-__ptext2 EC 0 CODE 0 text2 dist/default/production\Slave2.X.production.o
-__ptext3 144 0 CODE 0 text3 dist/default/production\Slave2.X.production.o
-__ptext4 118 0 CODE 0 text4 dist/default/production\Slave2.X.production.o
-__ptext5 158 0 CODE 0 text5 dist/default/production\Slave2.X.production.o
-_spiInit EC 0 CODE 0 text2 dist/default/production\Slave2.X.production.o
+__ptext1 A8 0 CODE 0 text1 dist/default/production\Slave2.X.production.o
+__ptext2 DC 0 CODE 0 text2 dist/default/production\Slave2.X.production.o
+__ptext3 134 0 CODE 0 text3 dist/default/production\Slave2.X.production.o
+__ptext4 108 0 CODE 0 text4 dist/default/production\Slave2.X.production.o
+__ptext5 148 0 CODE 0 text5 dist/default/production\Slave2.X.production.o
+_spiInit DC 0 CODE 0 text2 dist/default/production\Slave2.X.production.o
 spiWrite@dat 70 0 COMMON 1 cstackCOMMON dist/default/production\Slave2.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 spiInit@sType 76 0 COMMON 1 cstackCOMMON dist/default/production\Slave2.X.production.o
@@ -264,29 +264,29 @@ __Lclrtext 0 0 ABS 0 clrtext -
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\Slave2.X.production.o
 _SSPSTAT 94 0 ABS 0 - dist/default/production\Slave2.X.production.o
 __Hend_init 1E 0 CODE 0 end_init -
-__end_of_main B8 0 CODE 0 maintext dist/default/production\Slave2.X.production.o
-__end_of_INTER 158 0 CODE 0 text3 dist/default/production\Slave2.X.production.o
+__end_of_main A8 0 CODE 0 maintext dist/default/production\Slave2.X.production.o
+__end_of_INTER 148 0 CODE 0 text3 dist/default/production\Slave2.X.production.o
 _ANSEL 188 0 ABS 0 - dist/default/production\Slave2.X.production.o
-_INTER 144 0 CODE 0 text3 dist/default/production\Slave2.X.production.o
+_INTER 134 0 CODE 0 text3 dist/default/production\Slave2.X.production.o
 _PORTA 5 0 ABS 0 - dist/default/production\Slave2.X.production.o
 _PORTB 6 0 ABS 0 - dist/default/production\Slave2.X.production.o
 _PORTD 8 0 ABS 0 - dist/default/production\Slave2.X.production.o
 _SSPIF 63 0 ABS 0 - dist/default/production\Slave2.X.production.o
 _TRISA 85 0 ABS 0 - dist/default/production\Slave2.X.production.o
 _TRISD 88 0 ABS 0 - dist/default/production\Slave2.X.production.o
-__end_of_setup EC 0 CODE 0 text1 dist/default/production\Slave2.X.production.o
+__end_of_setup DC 0 CODE 0 text1 dist/default/production\Slave2.X.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 interrupt_function 8 0 CODE 0 intentry dist/default/production\Slave2.X.production.o
-_setup B8 0 CODE 0 text1 dist/default/production\Slave2.X.production.o
+_setup A8 0 CODE 0 text1 dist/default/production\Slave2.X.production.o
 _SSPSTATbits 94 0 ABS 0 - dist/default/production\Slave2.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\Slave2.X.production.o
 __size_of_isr 0 0 ABS 0 - dist/default/production\Slave2.X.production.o
-_contador 7A 0 COMMON 1 bssCOMMON dist/default/production\Slave2.X.production.o
+_contador 79 0 COMMON 1 bssCOMMON dist/default/production\Slave2.X.production.o
 spiInit@sClockIdle 74 0 COMMON 1 cstackCOMMON dist/default/production\Slave2.X.production.o
 __initialization 1E 0 CODE 0 cinit dist/default/production\Slave2.X.production.o
-_spiWrite 158 0 CODE 0 text5 dist/default/production\Slave2.X.production.o
-__end_of_spiWrite 164 0 CODE 0 text5 dist/default/production\Slave2.X.production.o
+_spiWrite 148 0 CODE 0 text5 dist/default/production\Slave2.X.production.o
+__end_of_spiWrite 154 0 CODE 0 text5 dist/default/production\Slave2.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -312,8 +312,8 @@ __end_of_spiWrite 164 0 CODE 0 text5 dist/default/production\Slave2.X.production
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-cstackCOMMON 1 70 70 B 1
-intentry 0 4 8 AE 2
+cstackCOMMON 1 70 70 A 1
+intentry 0 4 8 A6 2
 reset_vec 0 0 0 3 2
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section

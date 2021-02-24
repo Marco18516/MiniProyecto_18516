@@ -2725,6 +2725,8 @@ void ADC_INIT(void) {
 
 
 
+char volt;
+uint8_t ADC = 0;
 
 
 
@@ -2733,15 +2735,14 @@ void setup(void);
 uint8_t ADC_1(void);
 void INTER(void);
 
-char volt;
-uint8_t ADC = 0;
-
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
+
    if(SSPIF == 1){
 
         spiWrite(ADC);
+
         SSPIF = 0;
     }
 }
@@ -2764,6 +2765,7 @@ void main(void) {
     }
     return;
 }
+
 
 
 

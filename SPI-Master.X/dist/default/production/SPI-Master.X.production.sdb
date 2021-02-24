@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"123 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"126 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [e E1349 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -117,17 +117,17 @@ SPI_ACTIVE_2_IDLE 64
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"65 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"66 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"103
+"106
 [v _setup setup `(v  1 e 1 0 ]
-"126
+"129
 [v _OSCILADOR OSCILADOR `(v  1 e 1 0 ]
-"130
+"133
 [v _leer_ADC leer_ADC `(v  1 e 1 0 ]
-"142
+"146
 [v _Conteo Conteo `(v  1 e 1 0 ]
-"154
+"159
 [v _Sensor Sensor `(f  1 e 4 0 ]
 "12 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -311,11 +311,12 @@ SPI_ACTIVE_2_IDLE 64
 [v _data data `[20]uc  1 e 20 0 ]
 "53
 [v _volt volt `f  1 e 4 0 ]
+"54
 [v _temp temp `f  1 e 4 0 ]
-"65
+"66
 [v _main main `(v  1 e 1 0 ]
 {
-"99
+"104
 } 0
 "505 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -570,10 +571,10 @@ SPI_ACTIVE_2_IDLE 64
 [v ___fleq@ff2 ff2 `d  1 p 4 4 ]
 "12
 } 0
-"103 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"106 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"124
+"127
 } 0
 "12 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -587,10 +588,10 @@ SPI_ACTIVE_2_IDLE 64
 [v spiInit@sType sType `E1292  1 a 1 3 ]
 "27
 } 0
-"130 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"133 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _leer_ADC leer_ADC `(v  1 e 1 0 ]
 {
-"140
+"144
 } 0
 "20 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X/LIB_USART.h
 [v _config_txsta config_txsta `(v  1 e 1 0 ]
@@ -619,10 +620,10 @@ SPI_ACTIVE_2_IDLE 64
 [v Write_USART@a a `uc  1 a 1 0 ]
 "41
 } 0
-"154 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"159 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _Sensor Sensor `(f  1 e 4 0 ]
 {
-"165
+"171
 } 0
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -639,10 +640,10 @@ SPI_ACTIVE_2_IDLE 64
 [v ___xxtofl@sign sign `uc  1 a 1 8 ]
 "44
 } 0
-"126 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"129 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _OSCILADOR OSCILADOR `(v  1 e 1 0 ]
 {
-"128
+"131
 } 0
 "126 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X/LIB_LCD.h
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
@@ -700,10 +701,10 @@ SPI_ACTIVE_2_IDLE 64
 [v Puerto@x x `uc  1 a 1 0 ]
 "68
 } 0
-"142 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
+"146 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\main.c
 [v _Conteo Conteo `(v  1 e 1 0 ]
 {
-"152
+"157
 } 0
 "34 C:\Users\steff\Desktop\Septimo semestre\Digital II\MiniProyecto_18516\SPI-Master.X\SPI.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]

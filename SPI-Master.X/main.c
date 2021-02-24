@@ -50,7 +50,8 @@ uint8_t cont = 0;
 uint8_t ADC1 = 0;
 uint8_t ADC2 = 0;
 char data[20];
-float volt,temp;
+float volt;
+float temp;
 //*****************************************************************************
 // Definición de funciones 
 //*****************************************************************************
@@ -63,13 +64,13 @@ float Sensor(void);
 // Código Principal
 //*****************************************************************************
 void main(void) {
-    setup();
-    OSCILADOR();
-    Baudios();
-    config_txsta();
+    setup();//Configuración de puertos
+    OSCILADOR();//Frecuencia de oscilación
+    Baudios();//Llamamos a las funciones
+    config_txsta();//de la libreria USART
     config_rcsta();
-    Lcd_Init();
-    LCD_clean();
+    Lcd_Init();//Llamamos a las funciones
+    LCD_clean();//de la libreria de la LCD
     //*************************************************************************
     // Loop infinito
     //*************************************************************************
@@ -77,29 +78,31 @@ void main(void) {
         Conteo();
         leer_ADC();
         LCD_clean();
-        Lcd_Set_Cursor(1,1);
-        Lcd_Write_String("S1   S2   S3");
+        Lcd_Set_Cursor(1,1);//Escojemos la posicion del texto
+        Lcd_Write_String("S1   S2   S3");//Colocamos el texto a mostrar
        
-        temp = Sensor();
+        temp = Sensor();//Se igual la funcion a la variable
+        //Mostrara los valores de las variables en el orden colocado
         sprintf(data, "%1.0f   %d   %3.0f" ,volt,cont,temp);
-        
+        //Escojemos la posicion del texto
         Lcd_Set_Cursor(2,1);
+        //Muestra un string en la LCD
         Lcd_Write_String(data);
-        
+        //Escribimos en la maquina virtual
         Write_USART_String("S1   S2   S3");
+        //Posicion en la que se mostrara
         Write_USART(13);
         Write_USART(10);
-        
+        //Escribimos el valor almacenado de la varible data
         Write_USART_String(data);
+        //Posicion en la que se mostrara
         Write_USART(13);
         Write_USART(10);
         __delay_ms(500);
     }
     return;
 }
-//*****************************************************************************
-// Función de Inicialización
-//*****************************************************************************
+//Configuracion de puertos
 void setup(void){
     ANSEL = 0;
     ANSELH = 0;
@@ -115,23 +118,24 @@ void setup(void){
     TRISC0 = 0;
     TRISC1 = 0;
     TRISC2 = 0;
-    PORTCbits.RC0 = 0;
-    PORTCbits.RC1 = 0;
-    PORTCbits.RC2 = 0;
-    PORTCbits.RC7 = 0;
-
+    PORTCbits.RC0 = 1;
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC2 = 1;
+    PORTCbits.RC7 = 1;
+    //Configuraciones necesarias 
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 }
-
+//Configuración de frecuencia 
 void OSCILADOR(void) {
     OSCCON = 0b01110001; //8MHz
 }
-
+//Funcion para seleccionar Slave 1
 void leer_ADC(void){
     PORTCbits.RC0 = 0;       //Slave Select
     __delay_ms(1);
-       
+    //Se escribe en SSPBUF
     spiWrite(1);
+    //Se leen los datos enviados por el Slave 1 y se almacenan en volt
     volt = spiRead();
        
     __delay_ms(1);
@@ -142,8 +146,9 @@ void leer_ADC(void){
 void Conteo(void){
     PORTCbits.RC1 = 0;
     __delay_ms(1);
-       
+    //Se escribe en SSPBUF 
     spiWrite(1);
+    //Se leen los datos enviados por el Slave 2 y se almacenan en cont
     cont = spiRead();
        
     __delay_ms(1);
@@ -154,8 +159,9 @@ void Conteo(void){
 float Sensor(void){
     PORTCbits.RC2 = 0;
     __delay_ms(1);
-       
+    //Se escribe en SSPBUF
     spiWrite(1);
+    //Se leen los datos enviados por el Slave 3 y se almacenan en temp
     temp = spiRead();
        
     __delay_ms(1);

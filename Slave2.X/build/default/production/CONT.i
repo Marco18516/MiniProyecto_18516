@@ -2700,8 +2700,11 @@ void INTER(void);
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
+
     if(SSPIF == 1){
+
         spiWrite(contador);
+
         SSPIF = 0;
     }
 }
@@ -2716,23 +2719,24 @@ void main(void){
 
     while(1){
 
-        if (PORTBbits.RB0 == 0){
-            _delay((unsigned long)((100)*(8000000/4000.0)));
-            if (PORTBbits.RB0 == 1){
+        if (PORTBbits.RB6 == 0){
+            _delay((unsigned long)((70)*(8000000/4000.0)));
+            if (PORTBbits.RB6 == 1){
                 contador ++;
                 PORTD = contador;
             }
         }
 
-        if (PORTBbits.RB1 == 0){
-            _delay((unsigned long)((100)*(8000000/4000.0)));
-            if (PORTBbits.RB1 == 1){
+        if (PORTBbits.RB7 == 0){
+            _delay((unsigned long)((70)*(8000000/4000.0)));
+            if (PORTBbits.RB7 == 1){
                 contador --;
                 PORTD = contador;
             }
         }
     }
 }
+
 
 
 

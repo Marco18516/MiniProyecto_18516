@@ -2731,8 +2731,11 @@ uint8_t ADC_2(void);
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
+
     if(SSPIF == 1){
+
         spiWrite(T);
+
         SSPIF = 0;
     }
 }
@@ -2753,13 +2756,17 @@ void main(void){
     }
 }
 void Rango(uint8_t T){
+
     if (T < 25){
-        PORTD = 1;}
+        PORTD = 0b00100000;}
+
     else if (T > 25 && T < 36){
-        PORTD = 2;}
+        PORTD = 0b01000000;}
+
     else if (T > 36){
-        PORTD = 4;}
+        PORTD = 0b10000000;}
 }
+
 
 
 

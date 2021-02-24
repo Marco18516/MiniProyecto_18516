@@ -31,6 +31,8 @@
 // Definición de variables
 //*****************************************************************************
 #define _XTAL_FREQ 8000000
+char volt;
+uint8_t ADC = 0;
 //*****************************************************************************
 // Definición de funciones para que se puedan colocar después del main de lo 
 // contrario hay que colocarlos todas las funciones antes del main
@@ -38,16 +40,15 @@
 void setup(void);
 uint8_t ADC_1(void);//
 void INTER(void);
-
-char volt;
-uint8_t ADC = 0;
 //*****************************************************************************
 // Código de Interrupción 
 //*****************************************************************************
 void __interrupt() isr(void){
+    //Si la bandera de interrupcion es igual a 1
    if(SSPIF == 1){
-        //PORTD = spiRead();
+        //Escribira los datos en SSPBUF
         spiWrite(ADC);
+        //Limpiamos la bandera
         SSPIF = 0;
     }
 }
@@ -63,9 +64,9 @@ void main(void) {
     // Loop infinito
     //*************************************************************************
     while(1){
-       ADC_1(); 
-       ADC = ADC_1();
-       PORTD = ADC;
+       ADC_1(); //Llamamos a la función
+       ADC = ADC_1();//Guardamos en una variable el valor de la función
+       PORTD = ADC;//La mostramos en el puerte D
         __delay_ms(1);
     }
     return;
@@ -73,6 +74,7 @@ void main(void) {
 //*****************************************************************************
 // Función de Inicialización
 //*****************************************************************************
+//Configuración de Puertos
 void setup(void){
     ANSEL = 1;
     ANSELH = 0;
@@ -83,11 +85,11 @@ void setup(void){
     PORTA = 0;
     PORTB = 0;
     PORTD = 0;
-   
+   //Configuracion necesaria para slave
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
 }
-
+//Funcion para conversion
 uint8_t ADC_1(void) {
     ADC_CHANNEL(0); //canal 0
     //Cinfiguracion bits ADCON0
@@ -103,7 +105,7 @@ uint8_t ADC_1(void) {
     }
 }
 
-
+//Configuracion interrupcion
 void INTER(void){
     INTCONbits.GIE = 1;         // Habilitamos interrupciones
     INTCONbits.PEIE = 1;        // Habilitamos interrupciones PEIE

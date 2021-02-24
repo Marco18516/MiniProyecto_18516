@@ -43,8 +43,11 @@ uint8_t ADC_2(void);
 // Interrupcion
 //******************************************************************************
 void __interrupt() isr(void){
+    //Si la bandera de interrupcion es igual a 1
     if(SSPIF == 1){
+        //Escribira los datos en SSPBUF
         spiWrite(T);
+        //Limpiamos la bandera
         SSPIF = 0;
     }
 }
@@ -58,23 +61,27 @@ void main(void){
     // Loop principal
     //**************************************************************************
     while(1){
-        ADC_2();
-        ADC = ADC_2();
-        T = (ADC*1.95);
-        Rango(T);
+        ADC_2();//Llamamos a la funcion
+        ADC = ADC_2();//Guardamos en una variable el valor de la función
+        T = (ADC*1.95);//Convertimos al rango deceado
+        Rango(T);//Realizamos la funcion con el valor de la variable T 
     }        
 }
 void Rango(uint8_t T){
+    //Led verde se enciende si es menor a 25
     if (T < 25){
-        PORTD = 1;}
+        PORTD = 0b00100000;}
+    //Led amarillo se enciende si es mayor a 25 y menor a 36
     else if (T > 25 && T < 36){
-        PORTD = 2;}
+        PORTD = 0b01000000;}
+    //Led rojo se enciende si es mayor a 36
     else if (T > 36){
-        PORTD = 4;}
+        PORTD = 0b10000000;}
 }
 //******************************************************************************
 // Configuración
 //******************************************************************************
+//Configuracion de puertos
 void setup(void){
     ANSEL = 1;
     ANSELH = 0;  

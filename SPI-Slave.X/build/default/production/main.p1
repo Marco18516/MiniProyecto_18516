@@ -34,14 +34,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./SPI.h: 47: void spiWrite(char);
 [v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
 [p mainexit ]
-"38 main.c
-[; ;main.c: 38: void setup(void);
+"40 main.c
+[; ;main.c: 40: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
-"40
-[; ;main.c: 40: void INTER(void);
+"42
+[; ;main.c: 42: void INTER(void);
 [v _INTER `(v ~T0 @X0 0 ef ]
-"39
-[; ;main.c: 39: uint8_t ADC_1(void);
+"41
+[; ;main.c: 41: uint8_t ADC_1(void);
 [v _ADC_1 `(uc ~T0 @X0 0 ef ]
 "353 C:\Program Files\Microchip\xc8\v2.31\pic\include\proc\pic16f887.h
 [; ;C:\Program Files\Microchip\xc8\v2.31\pic\include\proc\pic16f887.h: 353: extern volatile unsigned char PORTD __attribute__((address(0x008)));
@@ -71,8 +71,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "229
 [; ;C:\Program Files\Microchip\xc8\v2.31\pic\include\proc\pic16f887.h: 229: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
-"87 main.c
-[; ;main.c: 87:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+"89 main.c
+[; ;main.c: 89:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 [c E1292 32 33 34 35 36 37 .. ]
 [n E1292 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
 [c E1300 0 128 .. ]
@@ -467,18 +467,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ADC_LIB.h: 41: }
 [e :UE 143 ]
 }
-"42 main.c
-[; ;main.c: 42: char volt;
+"34 main.c
+[; ;main.c: 34: char volt;
 [v _volt `uc ~T0 @X0 1 e ]
-"43
-[; ;main.c: 43: uint8_t ADC = 0;
+"35
+[; ;main.c: 35: uint8_t ADC = 0;
 [v _ADC `uc ~T0 @X0 1 e ]
 [i _ADC
 -> -> 0 `i `uc
 ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"47
-[; ;main.c: 47: void __attribute__((picinterrupt(("")))) isr(void){
+"46
+[; ;main.c: 46: void __attribute__((picinterrupt(("")))) isr(void){
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
@@ -490,166 +490,166 @@ Version 4.0 HI-TECH Software Intermediate Code
 "50
 [; ;main.c: 50:         spiWrite(ADC);
 [e ( _spiWrite (1 -> _ADC `uc ]
-"51
-[; ;main.c: 51:         SSPIF = 0;
-[e = _SSPIF -> -> 0 `i `b ]
 "52
-[; ;main.c: 52:     }
+[; ;main.c: 52:         SSPIF = 0;
+[e = _SSPIF -> -> 0 `i `b ]
+"53
+[; ;main.c: 53:     }
 }
 [e :U 145 ]
-"53
-[; ;main.c: 53: }
+"54
+[; ;main.c: 54: }
 [e :UE 144 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"57
-[; ;main.c: 57: void main(void) {
+"58
+[; ;main.c: 58: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"58
-[; ;main.c: 58:     setup();
-[e ( _setup ..  ]
 "59
-[; ;main.c: 59:     INTER();
-[e ( _INTER ..  ]
+[; ;main.c: 59:     setup();
+[e ( _setup ..  ]
 "60
-[; ;main.c: 60:     ADC_INIT();
+[; ;main.c: 60:     INTER();
+[e ( _INTER ..  ]
+"61
+[; ;main.c: 61:     ADC_INIT();
 [e ( _ADC_INIT ..  ]
-"65
-[; ;main.c: 65:     while(1){
+"66
+[; ;main.c: 66:     while(1){
 [e :U 148 ]
 {
-"66
-[; ;main.c: 66:        ADC_1();
-[e ( _ADC_1 ..  ]
 "67
-[; ;main.c: 67:        ADC = ADC_1();
-[e = _ADC ( _ADC_1 ..  ]
+[; ;main.c: 67:        ADC_1();
+[e ( _ADC_1 ..  ]
 "68
-[; ;main.c: 68:        PORTD = ADC;
-[e = _PORTD _ADC ]
+[; ;main.c: 68:        ADC = ADC_1();
+[e = _ADC ( _ADC_1 ..  ]
 "69
-[; ;main.c: 69:         _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;main.c: 69:        PORTD = ADC;
+[e = _PORTD _ADC ]
 "70
-[; ;main.c: 70:     }
+[; ;main.c: 70:         _delay((unsigned long)((1)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"71
+[; ;main.c: 71:     }
 }
 [e :U 147 ]
 [e $U 148  ]
 [e :U 149 ]
-"71
-[; ;main.c: 71:     return;
-[e $UE 146  ]
 "72
-[; ;main.c: 72: }
+[; ;main.c: 72:     return;
+[e $UE 146  ]
+"73
+[; ;main.c: 73: }
 [e :UE 146 ]
 }
-"76
-[; ;main.c: 76: void setup(void){
+"78
+[; ;main.c: 78: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"77
-[; ;main.c: 77:     ANSEL = 1;
-[e = _ANSEL -> -> 1 `i `uc ]
-"78
-[; ;main.c: 78:     ANSELH = 0;
-[e = _ANSELH -> -> 0 `i `uc ]
 "79
-[; ;main.c: 79:     TRISA = 1;
-[e = _TRISA -> -> 1 `i `uc ]
+[; ;main.c: 79:     ANSEL = 1;
+[e = _ANSEL -> -> 1 `i `uc ]
 "80
-[; ;main.c: 80:     TRISB = 0;
-[e = _TRISB -> -> 0 `i `uc ]
+[; ;main.c: 80:     ANSELH = 0;
+[e = _ANSELH -> -> 0 `i `uc ]
 "81
-[; ;main.c: 81:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
+[; ;main.c: 81:     TRISA = 1;
+[e = _TRISA -> -> 1 `i `uc ]
+"82
+[; ;main.c: 82:     TRISB = 0;
+[e = _TRISB -> -> 0 `i `uc ]
 "83
-[; ;main.c: 83:     PORTA = 0;
-[e = _PORTA -> -> 0 `i `uc ]
-"84
-[; ;main.c: 84:     PORTB = 0;
-[e = _PORTB -> -> 0 `i `uc ]
+[; ;main.c: 83:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
 "85
-[; ;main.c: 85:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;main.c: 85:     PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
+"86
+[; ;main.c: 86:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
 "87
-[; ;main.c: 87:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[e ( _spiInit (4 , , , . `E1292 4 . `E1300 0 . `E1304 1 . `E1308 0 ]
+[; ;main.c: 87:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
 "89
-[; ;main.c: 89: }
+[; ;main.c: 89:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[e ( _spiInit (4 , , , . `E1292 4 . `E1300 0 . `E1304 1 . `E1308 0 ]
+"91
+[; ;main.c: 91: }
 [e :UE 150 ]
 }
-"91
-[; ;main.c: 91: uint8_t ADC_1(void) {
+"93
+[; ;main.c: 93: uint8_t ADC_1(void) {
 [v _ADC_1 `(uc ~T0 @X0 1 ef ]
 {
 [e :U _ADC_1 ]
 [f ]
-"92
-[; ;main.c: 92:     ADC_CHANNEL(0);
-[e ( _ADC_CHANNEL (1 -> -> 0 `i `us ]
 "94
-[; ;main.c: 94:     ADCON0bits.ADCS0 = 1;
-[e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
-"95
-[; ;main.c: 95:     ADCON0bits.ADCS1 = 0;
-[e = . . _ADCON0bits 1 7 -> -> 0 `i `uc ]
+[; ;main.c: 94:     ADC_CHANNEL(0);
+[e ( _ADC_CHANNEL (1 -> -> 0 `i `us ]
 "96
-[; ;main.c: 96:     ADCON0bits.ADON = 1;
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 96:     ADCON0bits.ADCS0 = 1;
+[e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
 "97
-[; ;main.c: 97:     _delay((unsigned long)((0.25)*(8000000/4000.0)));
-[e ( __delay (1 -> * .0.25 / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;main.c: 97:     ADCON0bits.ADCS1 = 0;
+[e = . . _ADCON0bits 1 7 -> -> 0 `i `uc ]
 "98
-[; ;main.c: 98:     ADCON0bits.GO = 1;
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;main.c: 98:     ADCON0bits.ADON = 1;
+[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
 "99
-[; ;main.c: 99:     while (ADCON0bits.GO == 1) {
+[; ;main.c: 99:     _delay((unsigned long)((0.25)*(8000000/4000.0)));
+[e ( __delay (1 -> * .0.25 / -> -> 8000000 `l `d .4000.0 `ul ]
+"100
+[; ;main.c: 100:     ADCON0bits.GO = 1;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"101
+[; ;main.c: 101:     while (ADCON0bits.GO == 1) {
 [e $U 152  ]
 [e :U 153 ]
 {
-"102
-[; ;main.c: 102:         return ADRESH;
+"104
+[; ;main.c: 104:         return ADRESH;
 [e ) _ADRESH ]
 [e $UE 151  ]
-"103
-[; ;main.c: 103:     }
+"105
+[; ;main.c: 105:     }
 }
 [e :U 152 ]
-"99
-[; ;main.c: 99:     while (ADCON0bits.GO == 1) {
+"101
+[; ;main.c: 101:     while (ADCON0bits.GO == 1) {
 [e $ == -> . . _ADCON0bits 1 1 `i -> 1 `i 153  ]
 [e :U 154 ]
-"104
-[; ;main.c: 104: }
+"106
+[; ;main.c: 106: }
 [e :UE 151 ]
 }
-"107
-[; ;main.c: 107: void INTER(void){
+"109
+[; ;main.c: 109: void INTER(void){
 [v _INTER `(v ~T0 @X0 1 ef ]
 {
 [e :U _INTER ]
 [f ]
-"108
-[; ;main.c: 108:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"109
-[; ;main.c: 109:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
 "110
-[; ;main.c: 110:     PIR1bits.SSPIF = 0;
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 110:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "111
-[; ;main.c: 111:     PIE1bits.SSPIE = 1;
-[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 111:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
 "112
-[; ;main.c: 112:     TRISAbits.TRISA5 = 1;
-[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 112:     PIR1bits.SSPIF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"113
+[; ;main.c: 113:     PIE1bits.SSPIE = 1;
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
 "114
-[; ;main.c: 114: }
+[; ;main.c: 114:     TRISAbits.TRISA5 = 1;
+[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
+"116
+[; ;main.c: 116: }
 [e :UE 155 ]
 }

@@ -39,8 +39,11 @@ void INTER(void);
 // COdigo de interrupcion
 //******************************************************************************
 void __interrupt() isr(void){
+    //Si la bandera de interrupcion es igual a 1
     if(SSPIF == 1){
+        //Escribira los datos en SSPBUF
         spiWrite(contador);
+        //Limpiamos la bandera
         SSPIF = 0;
     }
 }
@@ -55,17 +58,17 @@ void main(void){
     //**************************************************************************
     while(1){
         //Configuracion Pull up
-        if (PORTBbits.RB0 == 0){
-            __delay_ms(100);//Antirrebote
-            if (PORTBbits.RB0 == 1){
+        if (PORTBbits.RB6 == 0){
+            __delay_ms(70);//Antirrebote
+            if (PORTBbits.RB6 == 1){
                 contador ++;//Incrementa variable
                 PORTD = contador;//Lo muestra en el puerto D
             }
         }
         //Configuracion Pull up
-        if (PORTBbits.RB1 == 0){
-            __delay_ms(100);
-            if (PORTBbits.RB1 == 1){
+        if (PORTBbits.RB7 == 0){
+            __delay_ms(70);
+            if (PORTBbits.RB7 == 1){
                 contador --;//Decrementa variable
                 PORTD = contador;//Lo muestra en el puerto D
             }
@@ -75,6 +78,7 @@ void main(void){
 //******************************************************************************
 // Programacion
 //******************************************************************************
+//Configuracion de puertos
 void setup(void){
     ANSEL = 0;
     ANSELH = 0;
@@ -87,7 +91,7 @@ void setup(void){
     PORTA = 0;
     PORTB = 0;
     PORTD = 0;
-   
+    //Configuracion necesaria para slave
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,SPI_IDLE_2_ACTIVE);
 
 }
